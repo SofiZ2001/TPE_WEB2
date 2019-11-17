@@ -60,7 +60,7 @@
 
         //error?
         public function update_game($params=null){
-            $this->auth_helper->check_login();
+            //$this->auth_helper->check_login();
             //$this->check_login();
             $id_juego = $params[':ID'];
             $game = $this->model->get_game($id_juego);

@@ -1,13 +1,15 @@
 {include file="header.tpl"}
+	<div class="separation">
+    </div>
 	<div class="weight_form_small">
 		{foreach from=$category_detail item=category}
 			<form action="save_update_category/{$category->nombre_categoria}" method="POST">
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<input type="text" name="nombre_categoria" class="form-control"  placeholder="Categoria" value="{$category->nombre_categoria}">
+						<input type="text" name="nombre_categoria" class="form-control" placeholder="Categoria" value="{$category->nombre_categoria}">
 					</div>
 					<div class="form-group col-md-6">
-						<input type="text" name="descripcion" class="form-control"  placeholder="Categoria" value="{$category->descripcion}">
+						<input type="text" name="descripcion" class="form-control" placeholder="Categoria" value="{$category->descripcion}">
 					</div>	
 				</div>
 				<div class="form-row">
