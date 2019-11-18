@@ -16,9 +16,11 @@ require_once('libs/Smarty.class.php');
             $this->smarty->display('./templates/game_details.tpl');
         }
 
-        public function show_update_game($game){
+        public function show_update_game($game, $category){
             $this->smarty->assign('basehref', game);
             $this->smarty->assign('game_detail',$game);
+            $this->smarty->assign('basehref', category);
+            $this->smarty->assign('category_detail',$category);
             $this->smarty->display('./templates/update_game.tpl');
         }
 

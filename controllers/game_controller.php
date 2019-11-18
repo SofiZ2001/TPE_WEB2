@@ -64,7 +64,8 @@
             //$this->check_login();
             $id_juego = $params[':ID'];
             $game = $this->model->get_game($id_juego);
-            $this->view->show_update_game($game);
+            $category = $this->cat_model->get_categories();
+            $this->view->show_update_game($game, $category);
         }
 
         //error?
