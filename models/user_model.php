@@ -22,7 +22,5 @@
         public function search_user($email){
             $sentence = $this->db->prepare("SELECT COUNT(*) FROM usuario WHERE email=?");
             return $sentence->execute(array($email));
-            
-
         }
     } 

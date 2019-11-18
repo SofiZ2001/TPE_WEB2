@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-18 08:13:05
+/* Smarty version 3.1.33, created on 2019-11-18 19:10:49
   from 'E:\xampp\htdocs\TPE_WEB2\templates\update_category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd2448159bcc1_38226085',
+  'unifunc' => 'content_5dd2dea9c43591_68769318',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2ecb82b53f54cfcb5ab814e2838d77e9e18e3e0b' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\update_category.tpl',
-      1 => 1574027050,
+      1 => 1574100648,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5dd2448159bcc1_38226085 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd2dea9c43591_68769318 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 	<div class="separation">
@@ -35,20 +35,24 @@ foreach ($_from as $_smarty_tpl->tpl_vars['category']->value) {
 ?>
 			<form action="save_update_category/<?php echo $_smarty_tpl->tpl_vars['category']->value->nombre_categoria;?>
 " method="POST">
-				<div class="form-row">
-					<div class="form-group col-md-6">
-						<input type="text" name="nombre_categoria" class="form-control" placeholder="Categoria" value="<?php echo $_smarty_tpl->tpl_vars['category']->value->nombre_categoria;?>
+				<div class="form-group col-md-10 offset-1">
+					<input type="text" name="nombre_categoria" id="name" class="form-control" placeholder="Categoria" value="<?php echo $_smarty_tpl->tpl_vars['category']->value->nombre_categoria;?>
 ">
+					<small id="name" class="form-text text-muted">Nombre del juego</small>
+				</div>
+				<div class="form-group col-md-10 offset-1">
+					<input type="text" name="descripcion" id="description" class="form-control" placeholder="Categoria" value="<?php echo $_smarty_tpl->tpl_vars['category']->value->descripcion;?>
+">
+					<small id="description" class="form-text text-muted">Descripcion del juego</small>
+				</div>
+				<div class="d-flex flex-column">
+					<div class="p-2 col-md-6 offset-3">
+				  		<input type="submit" name="save" value="Guardar" class="btn btn-primary form-group col-md-12">
 					</div>
-					<div class="form-group col-md-6">
-						<input type="text" name="descripcion" class="form-control" placeholder="Categoria" value="<?php echo $_smarty_tpl->tpl_vars['category']->value->descripcion;?>
-">
-					</div>	
-				</div>
-				<div class="form-row">
-					<input type="submit" name="save" value="Guardar" class="btn btn-primary form-group col-md-12"> 
-					<input type="submit" name="cancel" value="Cancelar" class="btn btn-primary form-group col-md-12">
-				</div>
+					<div class="p-2 col-md-6 offset-3">
+				  		<input type="submit" name="cancel" value="Cancelar" class="btn btn-primary form-group col-md-12">
+					</div>
+				</div>	
 			</form>
 		<?php
 }

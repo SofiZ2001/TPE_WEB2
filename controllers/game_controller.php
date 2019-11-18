@@ -50,7 +50,6 @@
             header("Location: " . game);
         }
 
-        //Es necesaria esta funcion?
         public function get_game($params=null){
             //$this->check_login();
             $id_juego = $params[':ID'];
@@ -58,7 +57,7 @@
             $this->view->show_game($game);
         }
 
-        //error?
+        //
         public function update_game($params=null){
             //$this->auth_helper->check_login();
             //$this->check_login();
@@ -68,7 +67,7 @@
             $this->view->show_update_game($game, $category);
         }
 
-        //error?
+        //
         public function save_update_game(){
             //$this->check_login();
             $id_juego = $_POST['id_juego'];

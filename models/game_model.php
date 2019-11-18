@@ -13,6 +13,7 @@
         $sentence->execute();
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
+
     public function get_sorted_games($categoria){
         $sentence = $this->db->prepare( "SELECT * FROM juego WHERE categoria=? ORDER BY nombre ASC, plataforma ASC");
         $sentence->execute(array($categoria));
@@ -24,7 +25,6 @@
         $sentence = $this->db->prepare( "SELECT * FROM juego WHERE id_juego=?");
         $sentence->execute(array($id_juego));
         return $sentence->fetchAll(PDO::FETCH_OBJ);
-        
     }
 
     public function add_game($nombre, $plataforma, $categoria){
