@@ -27,11 +27,45 @@
 
 .weight_form_small{
 	background-color: whitesmoke; 
-	height: 800px;
+	height: 1000px;
 	margin: 20px; 
 	border-radius: 10px;
 	width: 50%;
 	border: 2px solid lightgrey;
+	margin: 0 auto;
+	opacity: 0.9;
+}
+
+.user_login{
+	position: absolute;
+	background-color: white;
+	border: 1px solid black;
+	top: 50%;
+	left: 50%; 
+	width: 400px;
+	height: 420px;
+	margin-left: -200px;
+	margin-top: -210px;
+}
+
+.user_login_form{
+	background-color: whitesmoke; 
+	height: 420px;
+	width: 100%;
+	margin: 0 auto;
+	border-radius: 0px;
+}
+
+.img-container{ 
+	border-radius: 10px;
+	width: 80%;
+	border: 2px solid black;
+	margin: 0 auto;
+}
+
+.img-center{
+	height: 100%;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -41,11 +75,11 @@
 	margin: 20px; 
 }
 
-/*.fondo{
+.fondo{
 	background-image: url(img/fondo.jpg);
-	background-size: 100% 100%;
+	background-size: 100% 1000px;
 	background-repeat: no-repeat;
-}*/
+}
 
 .btn{
 	margin: 0 auto;

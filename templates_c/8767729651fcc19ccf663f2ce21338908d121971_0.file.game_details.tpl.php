@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-17 21:34:17
+/* Smarty version 3.1.33, created on 2019-11-18 20:55:30
   from 'E:\xampp\htdocs\TPE_WEB2\templates\game_details.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd1aec902fe60_94277078',
+  'unifunc' => 'content_5dd2f73233e736_21205985',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8767729651fcc19ccf663f2ce21338908d121971' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\game_details.tpl',
-      1 => 1574017772,
+      1 => 1574106926,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5dd1aec902fe60_94277078 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd2f73233e736_21205985 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     <div class="weight_form_small">
@@ -64,6 +64,17 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </tr>    
             </tbody>
         </table>
+        <div class="img-container">
+            <div class="img-center">
+                <img src="img/wow_logo.jpg" class="img-fluid img-thumbnail img-center">
+            </div>
+        </div>
+        <form>
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <small id="nombre" class="form-text text-muted">Seleccione un archivo</small>
+            </div>
+        </form>
     </div>
 <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }

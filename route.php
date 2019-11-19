@@ -34,9 +34,8 @@
 	$r->addRoute('add_game', 'GET', 'game_controller', 'add_game');
 	$r->addRoute('save_game','POST','game_controller','save_game');
 
-	$r->addRoute('save_update_game/:ID', 'POST', 'game_controller', 'save_update_game');
 	$r->addRoute('update_game/:ID','GET','game_controller','update_game');
-
+	$r->addRoute('save_update_game/:ID', 'POST', 'game_controller', 'save_update_game');
 
 	//CATEGORY
 	$r->addRoute('category', 'GET', 'category_controller', 'get_categories');

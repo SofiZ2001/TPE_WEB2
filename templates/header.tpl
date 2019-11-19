@@ -8,7 +8,7 @@
 	<base href='http://localhost/TPE_WEB2/game'>
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">	
 	<link rel="stylesheet" type="text/css" href="./css/estilo.css">
-	<title>Juegos</title>
+	<title>Games</title>
 </head>
 <body class="fondo">
 	<header>
@@ -28,7 +28,7 @@
 				        	<a class="nav-link" href="category">Categorias</a>
 				     	</li>
 				     	<li class="nav-item active">
-				        	<a class="nav-link" href="login">Iniciar sesion</a>
+				        	<a class="nav-link" href="login">Cerrar sesion</a>
 				     	</li>
 				    </ul>
 				</div>

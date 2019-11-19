@@ -26,5 +26,16 @@
                 </tr>    
             </tbody>
         </table>
+        <div class="img-container">
+            <div class="img-center">
+                <img src="img/wow_logo.jpg" class="img-fluid img-thumbnail img-center">
+            </div>
+        </div>
+        <form>
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <small id="nombre" class="form-text text-muted">Seleccione un archivo</small>
+            </div>
+        </form>
     </div>
 {include file="footer.tpl"}

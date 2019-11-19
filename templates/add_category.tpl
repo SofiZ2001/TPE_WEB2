@@ -8,7 +8,7 @@
 				<small id="categoria" class="form-text text-muted">Categoría</small>
 			</div>
 			<div class="form-group col-md-10 offset-1">
-			    <input type="text" class="form-control" name="descripcion"id="descripcion" placeholder="Descripcion">
+			    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="descripcion"></textarea>
 			    <small id="descripcion" class="form-text text-muted">Descripción</small>
 			</div>
 			<div class="d-flex flex-column">
