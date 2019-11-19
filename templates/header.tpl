@@ -28,6 +28,9 @@
 				        	<a class="nav-link" href="category">Categorías</a>
 				     	</li>
 				     	<li class="nav-item active">
+				        	<a class="nav-link" href="user">Usuario</a>
+				     	</li>
+				     	<li class="nav-item active">
 				        	<a class="nav-link" href="logout">Cerrar sesión</a>
 				     	</li>
 				    </ul>

@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/estilo.css">
 	<title>Games</title>
 </head>
-<body class="fondo">
+<body class="fondo_login">
 	<div class="user_login">
 		<form action="login_verify" method="POST" class="user_login_form">
 			<div>

@@ -9,7 +9,7 @@ require_once('libs/Smarty.class.php');
             $this->smarty->assign('basehref', BASE_URL);
         }
 
-        //error
+        //done
         public function show_game($game){
             $this->smarty->assign('basehref', game);
             $this->smarty->assign('game_details',$game);

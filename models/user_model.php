@@ -8,6 +8,7 @@
             $this->db = new PDO('mysql:host=localhost;'.'dbname=juegos;charset=utf8', 'root', '');
         }
 
+        //not used yet
         public function get_user($email){
             $sentence = $this->db->prepare("SELECT * FROM usuario WHERE email=?");
             $sentence->execute(array($email));
@@ -18,6 +19,19 @@
             $hash = password_hash($pass, PASSWORD_DEFAULT);
             $sentence= $this->db->prepare("INSERT INTO usuario (email, contraseña) VALUES (?,?)");
             $sentence->execute(array($email, $hash));
+        }
+
+        //not used yet
+        public function get_users(){
+            $sentence = $this->db->prepare("SELECT * FROM usuario");
+            $sentence->execute();
+            return $sentence->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        //not used yet
+        public function delete_user($email){
+            $sentence = $this->db->prepare("DELETE FROM usuario WHERE email=?");
+            $sentence->execute(array($email));
         }
 
         //No devuelve entero?

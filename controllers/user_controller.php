@@ -14,6 +14,29 @@
             $this->auth_helper = new auth_helper();
         }
 
+        //done
+        public function get_user($params=null){
+            //$this->auth_helper->check_login();
+            $email = $params[':ID'];
+            $user = $this->model->get_user($email);
+            $this->view->show_user($user);
+        }
+
+        //done
+        public function get_users(){
+            //$this->auth_helper->check_login();
+            $users = $this->model->get_users();
+            $this->view->show_users($users);
+        }
+
+         //done
+        public function delete_user($params=null){
+            //$this->auth_helper->check_login();
+            $email= $params[':ID'];
+            $this->model->delete_user($email);
+            header('Location: ' . game);
+        }
+
         public function login(){
             $this->view->show_login();
         }
@@ -76,4 +99,4 @@
 
 
     //FLUJO ROLES Y PERMISOS
-        
+

@@ -9,9 +9,17 @@
             $this->smarty->assign('basehref', BASE_URL);
         }
 
+        //DONE
         public function show_login($message = ''){
             $this->smarty->assign('basehref', login);
             $this->smarty->assign('message', $message);
             $this->smarty->display('./templates/user_login.tpl');
+        }
+
+        //DONE
+        public function show_users($user){
+            $this->smarty->assign('basehref', 'user');
+            $this->smarty->assign('user_list',$user);
+            $this->smarty->display('./templates/user.tpl');
         }
     }

@@ -16,6 +16,9 @@
 	$r->setDefaultRoute('user_controller', 'login');			
 	//$r->addRoute('home', 'GET', 'game_controller', 'show_game');//no hecho
 
+	//USER
+	$r->addRoute('user', 'GET', 'user_controller', 'get_users');
+
 	//LOGIN
 	$r->addRoute('login', 'GET', 'user_controller', 'login');
 	$r->addRoute('logout', 'GET', 'user_controller', 'logout');

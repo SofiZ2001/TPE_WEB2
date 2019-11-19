@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-17 21:31:17
+/* Smarty version 3.1.33, created on 2019-11-19 08:37:04
   from 'E:\xampp\htdocs\TPE_WEB2\templates\game.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd1ae1579a901_72060721',
+  'unifunc' => 'content_5dd39ba0170090_87040103',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b95651d87cea1746b13d55c047378f570b83b49f' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\game.tpl',
-      1 => 1574017772,
+      1 => 1574148864,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5dd1ae1579a901_72060721 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd39ba0170090_87040103 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     <div class="separation">

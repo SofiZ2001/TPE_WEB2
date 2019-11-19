@@ -20,6 +20,7 @@
 
         //done
         public function delete_game($params=null){
+            $this->auth_helper->check_login();
             $id= $params[':ID'];
             $this->model->delete_game($id);
             header('Location: ' . game);
@@ -27,12 +28,14 @@
 
         //done
         public function add_game(){
+            $this->auth_helper->check_login();
             $categories = $this->cat_model->get_categories();
             $this->view->add_game($categories);
         }
 
         //done
         public function save_game(){
+            $this->auth_helper->check_login();
             $nombre = $_POST['nombre'];
             $plataforma = $_POST['plataforma'];
             $categoria = $_POST['categoria'];
@@ -45,7 +48,7 @@
 
         //
         public function update_game($params=null){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             //$this->check_login();
             $id_juego = $params[':ID'];
             $game = $this->model->get_game($id_juego);
@@ -55,7 +58,7 @@
 
         //
         public function save_update_game(){
-            //$this->check_login();
+            $this->auth_helper->check_login();
             $id_juego = $_POST['id_juego'];
             //$id_juego = $params[':ID'];
             $nombre = $_POST['nombre'];
