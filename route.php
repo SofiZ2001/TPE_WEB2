@@ -9,14 +9,11 @@
 	define('game', BASE_URL . 'game');
 	define('category', BASE_URL . 'category');
 	define('login', BASE_URL . 'login');
-	//define('logout', BASE_URL . 'logout');
+	define('logout', BASE_URL . 'logout');
 	define('update_game', BASE_URL . 'update_game');
 	define('update_category', BASE_URL . 'update_category');
 	$r = new Router();
-	$r->setDefaultRoute('game_controller', 'get_games');
-
-	// arma la tabla de ruteo
-	//				
+	$r->setDefaultRoute('user_controller', 'login');			
 	//$r->addRoute('home', 'GET', 'game_controller', 'show_game');//no hecho
 
 	//LOGIN

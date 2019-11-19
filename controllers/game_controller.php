@@ -12,19 +12,12 @@
         private $category_controller;
 
         function __construct(){
-            
             $this->model = new game_model();
             $this->cat_model = new category_model();
             $this->view = new game_view();
             $this->auth_helper = new auth_helper();
         }
 
-        //done
-        public function get_games(){
-            $games = $this->model->get_games();
-            $this->view->show_games($games);
-        }
-        
         //done
         public function delete_game($params=null){
             $id= $params[':ID'];
@@ -46,15 +39,8 @@
             $save = $_POST['save'];
             if(isset($save))
                 if((!empty($nombre)) && (!empty($plataforma)) && (!empty($categoria)))
-                    $this->model->add_game($nombre,$plataforma,$categoria);//Agrego juego
+                    $this->model->add_game($nombre,$plataforma,$categoria);
             header("Location: " . game);
-        }
-
-        public function get_game($params=null){
-            //$this->check_login();
-            $id_juego = $params[':ID'];
-            $game = $this->model->get_game($id_juego);
-            $this->view->show_game($game);
         }
 
         //
@@ -83,18 +69,24 @@
         }
 
         public function sorted_games($params=null){
-            //$this->check_login();
             $categoria = $params[':ID'];
             $game = $this->model->get_sorted_games($categoria);
             $this->view->show_game($game);
         }
-        
 
-        /*public function check_login(){
-            session_start();
-            if(!isset($_SESSION['user'])){//si no estoy logueado
-                header("Location: " . login);//devuelvo al login
-                die();
-            }
-        }*/
+         //done
+        public function get_game($params=null){
+            $this->auth_helper->check_login();
+            $id_juego = $params[':ID'];
+            $game = $this->model->get_game($id_juego);
+            $this->view->show_game($game);
+        }
+
+        //done
+        public function get_games(){
+            $this->auth_helper->check_login();
+            $games = $this->model->get_games();
+            $this->view->show_games($games);
+        }
+        
     }

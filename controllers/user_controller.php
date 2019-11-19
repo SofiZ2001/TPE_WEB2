@@ -19,7 +19,7 @@
         }
 
         public function logout(){
-            $this->view->show_login();
+            $this->auth_helper->logout();
             header("Location: " . login);
         }
 
@@ -27,53 +27,53 @@
             //trae los valores de inputs por POST
             $email = $_POST['email'];
             $pass = $_POST['password'];
-            $user_data = $this->model->get_user($email);//obtiene el usuario en el model
-            $u = $email . " ". $pass;//debug
             if(isset($_POST['register'])){//REGISTRAR
                 if(!empty($email) && !empty($pass)){
-                    $exists = $this->model->search_user($email);
-                    if($exists==null){
+                    $user_data = $this->model->get_user($email);
+                    if($user_data==null){
                         $this->model->add_user($email, $pass);
+                        //$this->auth_helper->login($user_data);//linea necesaria?register->login
                         header("Location: " . game);
                     }else
-                        $this->view->show_login("Usted ya posee una cuenta");//
+                        $this->view->show_login("Usted ya posee una cuenta");
                 }
                 else
-                    $this->view->show_login("Faltan datos 1");
-            }elseif(isset($_POST['login'])){//INICIAR SESION
-                // y si la contraseña concuerda con la db
+                    $this->view->show_login("Complete todos los datos por favor");
+            }else if(isset($_POST['login'])){//INICIAR SESION
                 if(!empty($email) && !empty($pass)){
-                    if(!empty($user_data)){//si user_data existe en db
+                    $user_data = $this->model->get_user($email);//obtiene el usuario en el model
+                    if(!empty($user_data)){//si user existe en db
                         if(password_verify($pass, $user_data->contraseña)){//input user = db_pass ?
-                            //$this->auth_helper->login($user_data);
+                            $this->auth_helper->login($user_data);
                             header("Location: " . game);
                         }else
                             $this->view->show_login("Contraseña incorrecta");
                     }else
                         $this->view->show_login("Usuario no existente");
                 }else{
-                    $this->view->show_login("Faltan datos 2");
+                    $this->view->show_login("Faltan datos");
                 }
-
-                
-            }
-            //If isset register --> llamar a add user desde el model
-            //else--> que haga todo lo de abajo
-            //FLUJO
-                //REGISTRAR
-                    //REGISTRO EXITOSO -DONE
-                        //AGREGO AL MODEL -DONE
-                            //MUESTRO MENSAJE DE REGISTRO -DONE
-                                //LO LLEVO A GAME -DONE
-                                    //LO DEJO LOGUEADO -DOne
-                    //SI SE REGISTRA Y YA EXISTE MOSTRAR MENSAJE DE ERROR
-                //INICIAR SESION
-                    //LOGIN
-                        //EMAIL+CONTRASEÑA COINCIDEN
-                        //MOSTRAR ERROR DE DATOS INCORRECTOS
-                //INVITADO
-                    //VER CUALQUIER COSA->NO MODIFICAR NADA
-
+            }else
+                header("Location: " . login);
         }
 
     }
+
+    //FLUJO LOGIN
+        //REGISTRAR -DONEEEE
+            //REGISTRO EXITOSO -DONE
+                //AGREGO AL MODEL -DONE
+                    //MUESTRO MENSAJE DE REGISTRO -DONE
+                        //LO LLEVO A GAME -DONE
+                            //LO DEJO LOGUEADO -DONE
+            //SI SE REGISTRA Y YA EXISTE MOSTRAR MENSAJE DE ERROR -DONE
+        //INICIAR SESION -DONE
+            //LOGIN -DONE
+                //EMAIL+CONTRASEÑA COINCIDEN -DONE
+                //MOSTRAR ERROR DE DATOS INCORRECTOS -DONE
+        //INVITADO -TO DO
+            //VER CUALQUIER COSA->NO MODIFICAR NADA -TO DO      
+
+
+    //FLUJO ROLES Y PERMISOS
+        

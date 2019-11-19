@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-19 04:00:20
+/* Smarty version 3.1.33, created on 2019-11-19 05:18:56
   from 'E:\xampp\htdocs\TPE_WEB2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd35ac4288796_14069889',
+  'unifunc' => 'content_5dd36d30454b75_35668157',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '616f19e3a52ff3a09362b9d8befdc57db4afaf5b' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\header.tpl',
-      1 => 1574132418,
+      1 => 1574137126,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd35ac4288796_14069889 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd36d30454b75_35668157 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -48,10 +48,10 @@ function content_5dd35ac4288796_14069889 (Smarty_Internal_Template $_smarty_tpl)
 				       		<a class="nav-link" href="game">Juegos</a>
 				     	</li>
 				     	<li class="nav-item rojo">
-				        	<a class="nav-link" href="category">Categorias</a>
+				        	<a class="nav-link" href="category">Categorías</a>
 				     	</li>
 				     	<li class="nav-item active">
-				        	<a class="nav-link" href="login">Cerrar sesion</a>
+				        	<a class="nav-link" href="logout">Cerrar sesión</a>
 				     	</li>
 				    </ul>
 				</div>

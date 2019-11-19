@@ -25,10 +25,10 @@
 				       		<a class="nav-link" href="game">Juegos</a>
 				     	</li>
 				     	<li class="nav-item rojo">
-				        	<a class="nav-link" href="category">Categorias</a>
+				        	<a class="nav-link" href="category">Categorías</a>
 				     	</li>
 				     	<li class="nav-item active">
-				        	<a class="nav-link" href="login">Cerrar sesion</a>
+				        	<a class="nav-link" href="logout">Cerrar sesión</a>
 				     	</li>
 				    </ul>
 				</div>

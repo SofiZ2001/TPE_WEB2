@@ -13,6 +13,9 @@
 <body class="fondo">
 	<div class="user_login">
 		<form action="login_verify" method="POST" class="user_login_form">
+			<div>
+				<h1 class="title_page">Gamerank</h1>
+			</div>
 			<div class="form-group col-md-10 offset-1">
 				<input type="text" class="form-control" name="email" id="email" placeholder="Email">
 				<small id="emailHelp" class="form-text text-muted">No olvide colocar el @</small>
