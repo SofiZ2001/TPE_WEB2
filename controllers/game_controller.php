@@ -46,7 +46,7 @@
             header("Location: " . game);
         }
 
-        //
+        //done
         public function update_game($params=null){
             $this->auth_helper->check_login();
             //$this->check_login();
@@ -56,7 +56,7 @@
             $this->view->show_update_game($game, $category);
         }
 
-        //
+        //done
         public function save_update_game(){
             $this->auth_helper->check_login();
             $id_juego = $_POST['id_juego'];
@@ -66,7 +66,7 @@
             $categoria = $_POST['categoria'];
             $save= $_POST['save'];
             if(isset($save))
-                if((!empty($nombre)) && (!empty($plataforma)) && (!empty($categoria)))
+                if((!empty($nombre)) && (!empty($plataforma)))
                     $this->model->update_game($id_juego, $nombre, $plataforma, $categoria);
             header("Location: " . game);
         }

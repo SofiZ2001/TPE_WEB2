@@ -29,12 +29,34 @@
             $this->view->show_users($users);
         }
 
-         //done
+        //done
+        public function update_user($params=null){
+            //$this->auth_helper->check_login();
+            //$this->check_login();
+            $email = $params[':ID'];
+            $user = $this->model->get_login_user($email);
+            $users = $this->model->get_users_permisos();
+            $this->view->show_update_user($user, $users);
+        }
+
+        //done
+        public function save_update_user(){
+            //$this->auth_helper->check_login();
+            $email = $_POST['email'];
+            $permiso = $_POST['permiso'];
+            $save= $_POST['save'];
+            if(isset($save))
+                if(!empty($email))
+                    $this->model->update_user($email, $permiso);
+            header("Location: " . user);
+        }
+
+        //done
         public function delete_user($params=null){
             //$this->auth_helper->check_login();
             $email= $params[':ID'];
             $this->model->delete_user($email);
-            header('Location: ' . game);
+            header('Location: ' . user);
         }
 
         public function login(){
@@ -76,8 +98,10 @@
                 }else{
                     $this->view->show_login("Faltan datos");
                 }
-            }else
+            }else{
+                //ASIGNAR PERMISOS DE VIEW --TO DO
                 header("Location: " . login);
+            }
         }
 
     }

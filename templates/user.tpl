@@ -7,14 +7,24 @@
                 <tr>
                     <th>Email</th>
                     <th>Acción usuario</th>
-                    <th>Permisos</th>
+                    <th>Niveles de permisos</th>
+                    <th>Editar permisos</th>
                 </tr> 
             </thead>
             <tbody>
                 {foreach from=$user_list item=user}
                     <tr>
                         <td>{$user->email}</td>
-                        <td><a href='delete/{$user->email}'>Borrar</a></td>
+                        <td><a href='delete_user/{$user->email}'>Borrar</a></td>
+                        <td>
+                            {if {$user->permiso} == 0}
+                                Invitado
+                            {elseif {$user->permiso} == 1}
+                                Administrador
+                            {else}
+                                Usuario registrado
+                            {/if}
+                        </td>
                         <td><a href='update_user/{$user->email}'>Editar</a></td>
                     </tr> 
                 {/foreach}   

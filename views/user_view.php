@@ -18,8 +18,17 @@
 
         //DONE
         public function show_users($user){
-            $this->smarty->assign('basehref', 'user');
+            $this->smarty->assign('basehref', user);
             $this->smarty->assign('user_list',$user);
             $this->smarty->display('./templates/user.tpl');
+        }
+
+         //done
+        public function show_update_user($user, $users){
+            $this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_detail',$user);
+            $this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_detail_permiso',$users);
+            $this->smarty->display('./templates/update_user.tpl');
         }
     }

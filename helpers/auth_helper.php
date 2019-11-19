@@ -8,6 +8,8 @@
 		public function login($user){
 			session_start();
 			$_SESSION['user'] = $user->email;
+			//$_SESSION['permiso'] = $user->permiso;
+
 		}
 
 		public function check_login(){

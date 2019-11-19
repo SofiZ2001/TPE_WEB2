@@ -12,12 +12,16 @@
 	define('logout', BASE_URL . 'logout');
 	define('update_game', BASE_URL . 'update_game');
 	define('update_category', BASE_URL . 'update_category');
+	define('user', BASE_URL . 'user');
 	$r = new Router();
 	$r->setDefaultRoute('user_controller', 'login');			
 	//$r->addRoute('home', 'GET', 'game_controller', 'show_game');//no hecho
 
 	//USER
 	$r->addRoute('user', 'GET', 'user_controller', 'get_users');
+	$r->addRoute('delete_user/:ID', 'GET', 'user_controller', 'delete_user');
+	$r->addRoute('update_user/:ID','GET','user_controller','update_user');
+	$r->addRoute('save_update_user/:ID', 'POST', 'user_controller', 'save_update_user');
 
 	//LOGIN
 	$r->addRoute('login', 'GET', 'user_controller', 'login');

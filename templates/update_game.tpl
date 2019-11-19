@@ -25,7 +25,7 @@
 				</div>
 				<div class="d-flex flex-column">
 					<div class="p-2 col-md-6 offset-3">
-				  		<input type="submit" name="save" value="Guardar" class="btn btn-primary form-group col-md-12">
+					  	<input type="submit" name="save" value="Guardar" class="btn btn-primary form-group col-md-12">
 					</div>
 					<div class="p-2 col-md-6 offset-3">
 				  		<input type="submit" name="cancel" value="Cancelar" class="btn btn-primary form-group col-md-12">

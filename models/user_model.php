@@ -3,16 +3,29 @@
     class user_model{
 
         private $db;
-        
         function __construct(){
             $this->db = new PDO('mysql:host=localhost;'.'dbname=juegos;charset=utf8', 'root', '');
         }
 
-        //not used yet
+        //DONE
         public function get_user($email){
             $sentence = $this->db->prepare("SELECT * FROM usuario WHERE email=?");
             $sentence->execute(array($email));
             return $sentence->fetch(PDO::FETCH_OBJ);
+        }
+
+        //DONE
+        public function get_login_user($email){
+            $sentence = $this->db->prepare("SELECT * FROM usuario WHERE email=?");
+            $sentence->execute(array($email));
+            return $sentence->fetchAll(PDO::FETCH_OBJ);
+        }
+
+         //not used yet
+        public function get_users_permisos(){
+            $sentence = $this->db->prepare("SELECT DISTINCT permiso FROM usuario");
+            $sentence->execute();
+            return $sentence->fetchAll(PDO::FETCH_OBJ);
         }
 
         public function add_user($email, $pass){
@@ -27,6 +40,12 @@
             $sentence->execute();
             return $sentence->fetchAll(PDO::FETCH_OBJ);
         }
+
+        public function update_user($email,$permiso){
+            $sentence =$this->db->prepare("UPDATE usuario SET permiso=? WHERE email=?");
+            $sentence->execute(array($permiso, $emailo));
+        return $sentence->fetchAll(PDO::FETCH_OBJ);
+    }
 
         //not used yet
         public function delete_user($email){
