@@ -16,13 +16,12 @@
                     <tr>
                         <td>{$user->email}</td>
                         <td><a href='delete_user/{$user->email}'>Borrar</a></td>
-                        <td>
-                            {if {$user->permiso} == 0}
-                                Invitado
-                            {elseif {$user->permiso} == 1}
+                        <td>{if {$user->id_permiso} == 1}
                                 Administrador
+                            {elseif {$user->id_permiso} == 2}
+                                Registrado
                             {else}
-                                Usuario registrado
+                                Invitado
                             {/if}
                         </td>
                         <td><a href='update_user/{$user->email}'>Editar</a></td>

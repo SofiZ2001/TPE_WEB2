@@ -1,7 +1,7 @@
 <?php
 require_once ('./models/category_model.php');
 require_once ('./views/category_view.php');
-require_once ('secured_controller.php');
+require_once ('./helpers/auth_helper.php');
 
 class category_controller{
     private $model;
@@ -10,17 +10,27 @@ class category_controller{
     function __construct(){
         $this->model = new category_model();
         $this->view = new category_view();
+        $this->auth_helper = new auth_helper();
     }
 
     //done
     public function get_categories(){
-        //$this->check_login();
+        $this->auth_helper->check_login();
         $categories = $this->model->get_categories();
         $this->view->show_categories($categories);
     }
 
     //done
+    public function get_category($params=null){
+        $this->auth_helper->check_login();
+        $nombre_categoria= $params[':ID'];
+        $category = $this->model->get_category($nombre_categoria);
+        $this->view->show_category($category);
+    }
+
+    //done
     public function delete_category($params=null){
+        $this->auth_helper->check_login();
         $id = $params [':ID'];
         $this->model->delete_category($id);
         header("Location: " . category);
@@ -28,11 +38,13 @@ class category_controller{
 
     //done
     public function add_category(){
+        $this->auth_helper->check_login();
         $this->view->add_category();
     }
 
     //done
     public function save_category(){
+        $this->auth_helper->check_login();
         $nombre_categoria = $_POST['nombre_categoria'];
         $descripcion = $_POST['descripcion'];
         $save = $_POST['save'];
@@ -43,23 +55,15 @@ class category_controller{
     }
 
     //done
-    public function get_category($params=null){
-        //$this->check_login();
-        $nombre_categoria= $params[':ID'];
-        $category = $this->model->get_category($nombre_categoria);
-        $this->view->show_category($category);
-    }
-
-    //done
     public function update_category($params=null){
-        //$this->check_login();
+        $this->auth_helper->check_login();
         $nombre_categoria = $params[':ID'];
         $category = $this->model->get_category($nombre_categoria);
         $this->view->show_update_category($category);
     }
 
     public function save_update_category(){
-        //$this->check_login();
+        $this->auth_helper->check_login();
         $nombre_categoria = $_POST['nombre_categoria'];
         $descripcion = $_POST['descripcion'];
         $save = $_POST['save'];

@@ -35,8 +35,8 @@
             //$this->check_login();
             $email = $params[':ID'];
             $user = $this->model->get_login_user($email);
-            $users = $this->model->get_users_permisos();
-            $this->view->show_update_user($user, $users);
+            $permisos = $this->model->get_permisos();
+            $this->view->show_update_user($user, $permisos);
         }
 
         //done
@@ -44,10 +44,19 @@
             //$this->auth_helper->check_login();
             $email = $_POST['email'];
             $permiso = $_POST['permiso'];
+            //***QUEDO PEGADO AL CODIGO***
+            if($permiso=='Administrador'){
+                $id_permiso=1;
+            }else if($permiso=='Registrado'){
+                $id_permiso=2;
+            }else{
+                $id_permiso=3;
+            }
+            //$id_permiso = $this->model->get_id_permiso($permiso);//VER LA FORMA DE CAMBIAR ESTO
             $save= $_POST['save'];
             if(isset($save))
                 if(!empty($email))
-                    $this->model->update_user($email, $permiso);
+                    $this->model->update_user($email, $id_permiso);
             header("Location: " . user);
         }
 
@@ -76,9 +85,11 @@
                 if(!empty($email) && !empty($pass)){
                     $user_data = $this->model->get_user($email);
                     if($user_data==null){
-                        $this->model->add_user($email, $pass);
+                        $id_permiso = 2;
+                        $this->model->add_user($email, $pass, $id_permiso);
                         //$this->auth_helper->login($user_data);//linea necesaria?register->login
-                        header("Location: " . game);
+                        //header("Location: " . game);
+                        $this->view->show_login("Login correcto");
                     }else
                         $this->view->show_login("Usted ya posee una cuenta");
                 }
@@ -100,6 +111,7 @@
                 }
             }else{
                 //ASIGNAR PERMISOS DE VIEW --TO DO
+                $id_permiso = 3;//PERMISO DE VIEW ONLY
                 header("Location: " . login);
             }
         }

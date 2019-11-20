@@ -4,17 +4,14 @@
 	<div class="weight_form_small">
 		{foreach from=$user_detail item=user}
 		<form action="save_update_user/{$user->email}" method="POST">
-			<!-- <div class="form-group col-md-10 offset-1">
-				<input type="hidden" name="id_juego" class="form-control" id="id_juego" placeholder="Id juego" value="{$game->email}">
-			</div> -->
 			<div class="form-group col-md-10 offset-1">
 				<input type="text" name="email" class="form-control" id="email" placeholder="email" value="{$user->email}">
 				<small id="email" class="form-text text-muted">Email</small>
 			</div>
 			<div class="form-group col-md-10 offset-1"> 	
-				<select name="categoria" class="form-control">
-					{foreach from=$user_detail_permiso item=users}
-						<option>{$users->permiso}</option>
+				<select name="permiso" class="form-control">
+					{foreach from=$user_permisos item=permisos}
+						<option>{$permisos->permiso}</option>
 					{/foreach}
 				</select>
 				<small id="permiso" class="form-text text-muted">Permiso</small>	

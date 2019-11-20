@@ -2,7 +2,6 @@
 	require_once('controllers/game_controller.php');
 	require_once ('controllers/category_controller.php');
 	require_once ('controllers/user_controller.php');
-	require_once ('controllers/secured_controller.php');
 	require_once('router.php');
 
 	define('BASE_URL', 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');

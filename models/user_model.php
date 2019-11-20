@@ -21,29 +21,38 @@
             return $sentence->fetchAll(PDO::FETCH_OBJ);
         }
 
-         //not used yet
-        public function get_users_permisos(){
-            $sentence = $this->db->prepare("SELECT DISTINCT permiso FROM usuario");
+         //DONE
+        public function get_id_permiso($permiso){
+            $sentence = $this->db->prepare("SELECT id_permiso FROM permisos WHERE permiso=?");
+            $sentence->execute(array($permiso));
+            return $sentence->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        //DONE
+        public function get_permisos(){
+            $sentence = $this->db->prepare("SELECT * FROM permisos");
             $sentence->execute();
             return $sentence->fetchAll(PDO::FETCH_OBJ);
         }
 
-        public function add_user($email, $pass){
+        //DONE
+        public function add_user($email, $pass, $id_permiso){
             $hash = password_hash($pass, PASSWORD_DEFAULT);
-            $sentence= $this->db->prepare("INSERT INTO usuario (email, contraseña) VALUES (?,?)");
-            $sentence->execute(array($email, $hash));
+            $sentence= $this->db->prepare("INSERT INTO usuario (email, contraseña, id_permiso) VALUES (?,?,?)");
+            $sentence->execute(array($email, $hash, $id_permiso));
         }
 
-        //not used yet
+        //DONE
         public function get_users(){
             $sentence = $this->db->prepare("SELECT * FROM usuario");
             $sentence->execute();
             return $sentence->fetchAll(PDO::FETCH_OBJ);
         }
 
-        public function update_user($email,$permiso){
-            $sentence =$this->db->prepare("UPDATE usuario SET permiso=? WHERE email=?");
-            $sentence->execute(array($permiso, $emailo));
+        //to do
+        public function update_user($email,$id_permiso){
+            $sentence =$this->db->prepare("UPDATE usuario SET id_permiso=? WHERE email=?");
+            $sentence->execute(array($id_permiso, $email));
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-19 17:58:40
+/* Smarty version 3.1.33, created on 2019-11-20 03:42:39
   from 'E:\xampp\htdocs\TPE_WEB2\templates\update_user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd41f40c0bc24_18146779',
+  'unifunc' => 'content_5dd4a81f7ad1d6_73536445',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4f227e5573b1b2bf40c3720ce6cc01db0a143d3' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\update_user.tpl',
-      1 => 1574182718,
+      1 => 1574217750,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5dd41f40c0bc24_18146779 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd4a81f7ad1d6_73536445 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 	<div class="separation">
@@ -35,23 +35,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['user']->value) {
 ?>
 		<form action="save_update_user/<?php echo $_smarty_tpl->tpl_vars['user']->value->email;?>
 " method="POST">
-			<!-- <div class="form-group col-md-10 offset-1">
-				<input type="hidden" name="id_juego" class="form-control" id="id_juego" placeholder="Id juego" value="<?php echo $_smarty_tpl->tpl_vars['game']->value->email;?>
-">
-			</div> -->
 			<div class="form-group col-md-10 offset-1">
 				<input type="text" name="email" class="form-control" id="email" placeholder="email" value="<?php echo $_smarty_tpl->tpl_vars['user']->value->email;?>
 ">
 				<small id="email" class="form-text text-muted">Email</small>
 			</div>
 			<div class="form-group col-md-10 offset-1"> 	
-				<select name="categoria" class="form-control">
+				<select name="permiso" class="form-control">
 					<?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['user_detail_permiso']->value, 'users');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['user_permisos']->value, 'permisos');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['users']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['permisos']->value) {
 ?>
-						<option><?php echo $_smarty_tpl->tpl_vars['users']->value->permiso;?>
+						<option><?php echo $_smarty_tpl->tpl_vars['permisos']->value->permiso;?>
 </option>
 					<?php
 }

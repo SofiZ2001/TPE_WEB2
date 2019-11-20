@@ -1,7 +1,6 @@
 <?php
     require_once ('./models/game_model.php');
     require_once ('./views/game_view.php');
-    require_once ('secured_controller.php');
     require_once ('./helpers/auth_helper.php');
     require_once ('category_controller.php');
 
@@ -16,6 +15,21 @@
             $this->cat_model = new category_model();
             $this->view = new game_view();
             $this->auth_helper = new auth_helper();
+        }
+
+        //done
+        public function get_games(){
+            $this->auth_helper->check_login();
+            $games = $this->model->get_games();
+            $this->view->show_games($games);
+        }
+
+        //done
+        public function get_game($params=null){
+            $this->auth_helper->check_login();
+            $id_juego = $params[':ID'];
+            $game = $this->model->get_game($id_juego);
+            $this->view->show_game($game);
         }
 
         //done
@@ -77,19 +91,8 @@
             $this->view->show_game($game);
         }
 
-         //done
-        public function get_game($params=null){
-            $this->auth_helper->check_login();
-            $id_juego = $params[':ID'];
-            $game = $this->model->get_game($id_juego);
-            $this->view->show_game($game);
-        }
+        
 
-        //done
-        public function get_games(){
-            $this->auth_helper->check_login();
-            $games = $this->model->get_games();
-            $this->view->show_games($games);
-        }
+        
         
     }

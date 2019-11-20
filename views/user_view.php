@@ -24,11 +24,11 @@
         }
 
          //done
-        public function show_update_user($user, $users){
+        public function show_update_user($user, $permisos){
             $this->smarty->assign('basehref', user);
             $this->smarty->assign('user_detail',$user);
             $this->smarty->assign('basehref', user);
-            $this->smarty->assign('user_detail_permiso',$users);
+            $this->smarty->assign('user_permisos',$permisos);
             $this->smarty->display('./templates/update_user.tpl');
         }
     }
