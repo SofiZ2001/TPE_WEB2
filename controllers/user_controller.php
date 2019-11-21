@@ -52,7 +52,7 @@
             }else{
                 $id_permiso=3;
             }
-            //$id_permiso = $this->model->get_id_permiso($permiso);//VER LA FORMA DE CAMBIAR ESTO
+            //$id_permiso = $this->model->get_id_permiso($permiso);//ver la forma de cambiar esto, es lo mismo que tomar el string que viene del input
             $save= $_POST['save'];
             if(isset($save))
                 if(!empty($email))
@@ -107,7 +107,7 @@
                     }else
                         $this->view->show_login("Usuario no existente");
                 }else{
-                    $this->view->show_login("Faltan datos");
+                    $this->view->show_login("Faltan datos, completelos por favor");
                 }
             }else{
                 //ASIGNAR PERMISOS DE VIEW --TO DO

@@ -1,10 +1,7 @@
 # TPE_WEBII
 
 INSERT INTO `usuario`(`email`, `contraseña`) VALUES ('gassanchez14@gmail.com', '123');
-
-
 ALTER TABLE usuario ADD CONSTRAINT fk_usuario FOREIGN KEY (email) REFERENCES permisos (email);
-
 
 
 QUESTIONS
@@ -25,7 +22,10 @@ user controller
 REQS
 	
 	API REST
-		hacer otra db que guarde comments por user?
+		hacer otra db que guarde comments por user? 
+		Que pasa si un user tiene varios comments?
 		comments con client side rendering?				
 	Agregar una imagen con respecto a un item que ya existe y llamar al mostrar con la imagen?
 		Adicional poder cargar la imagen en el llamado al add_game?
+
+		delete comments solo por api?

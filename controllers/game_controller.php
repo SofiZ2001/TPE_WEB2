@@ -54,7 +54,7 @@
             $id_juego = $params[':ID'];
             //imagen
             $imagen = $_FILES["uploaded_file"]["name"];
-                //si viene 
+                //si viene la img
                     //add model
                     $add_img = $this->model->add_game_image($id_juego, $imagen);
                     //llamo a get game
