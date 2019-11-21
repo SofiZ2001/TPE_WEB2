@@ -27,10 +27,29 @@
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
+    //DONE
     public function add_game($nombre, $plataforma, $categoria){
         $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria) VALUES(?,?,?)");
         $sentence->execute(array($nombre,$plataforma,$categoria));
     }
+
+    //NEW
+    /*public function add_img($nombre, $plataforma, $categoria, $imagen=null){
+        $path_img = null;
+        if($imagen)
+            $path_img = $this->upload_image($imagen);
+        $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
+        $sentence->execute(array($nombre,$plataforma,$categoria,$path_img));
+        return $this->db->lastInsertId();// QUE DEVUELVO ACA?
+    }
+
+    //NEW
+    private function upload_image($imagen){
+        $target = 'img/' . uniqid() . '.jpg';
+        move_uploaded_file($imagen, $target);
+        return $target;
+    }*/
+
     
     public function update_game($id_juego,$nombre,$plataforma,$categoria){
         $sentence =$this->db->prepare("UPDATE juego SET nombre= ?, plataforma=?, categoria=? WHERE id_juego=?");

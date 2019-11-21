@@ -55,8 +55,12 @@
             $categoria = $_POST['categoria'];
             $save = $_POST['save'];
             if(isset($save))
-                if((!empty($nombre)) && (!empty($plataforma)) && (!empty($categoria)))
-                    $this->model->add_game($nombre,$plataforma,$categoria);
+                if((!empty($nombre)) && (!empty($plataforma)) && (!empty($categoria))){
+                    /*if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png")
+                        $this->model->add_game($nombre,$plataforma,$categoria,$_FILES['input_name']['tmp_name']);
+                    else*///NO ES LO QUE PIDE EL TRABAJO-CONSULTAR
+                        $this->model->add_game($nombre,$plataforma,$categoria);
+                }
             header("Location: " . game);
         }
 

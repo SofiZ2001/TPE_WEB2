@@ -26,16 +26,55 @@
                 </tr>    
             </tbody>
         </table>
+        <!-- 
         <div class="img-container">
             <div class="img-center">
                 <img src="img/wow_logo.jpg" class="img-fluid img-thumbnail img-center">
             </div>
-        </div>
+        </div> 
         <form>
             <div class="form-group">
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
                 <small id="nombre" class="form-text text-muted">Seleccione un archivo</small>
             </div>
         </form>
+        -->
+        {if isset($game->imagen)}
+            <img src="{$game->imagen}"/>
+        {/if}
+
+        <form action="add_img" method="POST" enctype="multipart/form-data">
+            <!-- <div class="row">
+                <div class="col-12">
+                <label>Descripcion</label>
+                <textarea name="descripcion" class="form-control" rows="3"></textarea>
+            </div> -->
+            <div class="form-group">
+                <input type="file" name="uploaded_file">
+            </div>
+            <input type="submit" class="btn btn-primary" value="save">Guardar</input>
+        </form>
+
+
+
+        <!-- //EN PHP
+        //Nombre del archivo
+        $_FILES[“input_name”][“name”]
+
+        //Archivo temporal creado en el server
+        $_FILES[“input_name”][“tmp_name”] -->
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 {include file="footer.tpl"}

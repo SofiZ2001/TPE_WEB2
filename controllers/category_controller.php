@@ -15,14 +15,14 @@ class category_controller{
 
     //done
     public function get_categories(){
-        $this->auth_helper->check_login();
+        //$this->auth_helper->check_login();
         $categories = $this->model->get_categories();
         $this->view->show_categories($categories);
     }
 
     //done
     public function get_category($params=null){
-        $this->auth_helper->check_login();
+        //$this->auth_helper->check_login();
         $nombre_categoria= $params[':ID'];
         $category = $this->model->get_category($nombre_categoria);
         $this->view->show_category($category);
