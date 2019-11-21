@@ -50,12 +50,18 @@
         //NEW
         public function add_game_image($params=null, $imagen=null){
             //$this->auth_helper->check_login();
+            //tengo un id
             $id_juego = $params[':ID'];
+            //imagen
             $imagen = $_FILES["uploaded_file"]["name"];
-            $categories = $this->model->add_game_image($id_juego, $imagen);
-            $this->view->add_game($categories);
-
-
+                //si viene 
+                    //add model
+                    $add_img = $this->model->add_game_image($id_juego, $imagen);
+                    //llamo a get game
+                    $game = $this->model->get_game($id_juego);
+                    //muestro
+                    $this->view->show_game($game);
+                //sino muestro mensaje: "la imagen no fue cargada"
             $target_path = "./img/";
             $target_path = $target_path . basename( $_FILES['uploaded_file']['name']); 
             if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $target_path)) {
@@ -75,9 +81,9 @@
             $save = $_POST['save'];
             if(isset($save))
                 if((!empty($nombre)) && (!empty($plataforma)) && (!empty($categoria))){
-                    /*if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png")
+                    if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png")
                         $this->model->add_game($nombre,$plataforma,$categoria,$_FILES['input_name']['tmp_name']);
-                    else*///NO ES LO QUE PIDE EL TRABAJO-CONSULTAR
+                    else//NO ES LO QUE PIDE EL TRABAJO-CONSULTAR
                         $this->model->add_game($nombre,$plataforma,$categoria);
                 }
             header("Location: " . game);

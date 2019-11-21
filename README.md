@@ -27,4 +27,5 @@ REQS
 	API REST
 		hacer otra db que guarde comments por user?
 		comments con client side rendering?				
-	Agregar una imagen con respecto a un item que ya existe, no en el llamado al add_game
+	Agregar una imagen con respecto a un item que ya existe y llamar al mostrar con la imagen?
+		Adicional poder cargar la imagen en el llamado al add_game?
