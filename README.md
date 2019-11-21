@@ -9,6 +9,8 @@ ALTER TABLE usuario ADD CONSTRAINT fk_usuario FOREIGN KEY (email) REFERENCES per
 
 QUESTIONS
 
+IMPLEMENTACION
+
 user controller
 	public function save_update_user()
 		quedo pegado al codigo con el if
@@ -17,3 +19,12 @@ user controller
 	public function login_verify()
 		register
 			loguear al hacer register=success
+
+			como cambiar el metodo save update user?
+			como logueo al registrarse exitosamente?
+REQS
+	
+	API REST
+		hacer otra db que guarde comments por user?
+		comments con client side rendering?				
+	Agregar una imagen con respecto a un item que ya existe, no en el llamado al add_game
