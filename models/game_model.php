@@ -34,13 +34,11 @@
     }
 
     //NEW
-    /*public function add_img($nombre, $plataforma, $categoria, $imagen=null){
-        $path_img = null;
-        if($imagen)
-            $path_img = $this->upload_image($imagen);
-        $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
-        $sentence->execute(array($nombre,$plataforma,$categoria,$path_img));
-        return $this->db->lastInsertId();// QUE DEVUELVO ACA?
+    public function add_game_image($id_juego, $imagen){
+        $path_img = $this->upload_image($imagen);
+        $sentence = $this->db->prepare("UPDATE juego SET imagen=? WHERE id_juego=?");
+        $sentence->execute(array($path_img, $id_juego));
+        //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
     }
 
     //NEW
@@ -48,11 +46,11 @@
         $target = 'img/' . uniqid() . '.jpg';
         move_uploaded_file($imagen, $target);
         return $target;
-    }*/
+    }
 
     
     public function update_game($id_juego,$nombre,$plataforma,$categoria){
-        $sentence =$this->db->prepare("UPDATE juego SET nombre= ?, plataforma=?, categoria=? WHERE id_juego=?");
+        $sentence =$this->db->prepare("UPDATE juego SET nombre=?, plataforma=?, categoria=? WHERE id_juego=?");
         $sentence->execute(array($nombre, $plataforma, $categoria,$id_juego));
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }

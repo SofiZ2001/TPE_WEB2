@@ -5,6 +5,7 @@
                 <tr>
                     <th>Categoria</th>
                     <th>Descripcion</th>
+                    <th></th>
                     <th>Acción</th>
                 </tr> 
             </thead>
@@ -13,14 +14,13 @@
                     <tr>
                         <td>{$category->nombre_categoria}</td>
                         <td>{$category->descripcion}</td>
-                        <td>
-                            <a href= 'delete_category/{$category->nombre_categoria}'>Borrar</a> 
-                            <a href= 'update_category/{$category->nombre_categoria}'>Editar</a>
+                        <td><a href= 'delete_category/{$category->nombre_categoria}'>Borrar</a></td>
+                        <td><a href= 'update_category/{$category->nombre_categoria}'>Editar</a>
                         </td>
                     </tr> 
                 {/foreach}
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="3"></td>
                     <td><a href='add_category'>Agregar categoria</a></td>
                 </tr>    
             </tbody>
