@@ -44,7 +44,8 @@
             //$this->auth_helper->check_login();
             $email = $_POST['email'];
             $permiso = $_POST['permiso'];
-            //***QUEDO PEGADO AL CODIGO***
+//            //***QUEDO PEGADO AL CODIGO***
+            //el input permiso trae un string pero en db esta como int
             if($permiso=='Administrador'){
                 $id_permiso=1;
             }else if($permiso=='Registrado'){
@@ -87,9 +88,10 @@
                     if($user_data==null){
                         $id_permiso = 2;
                         $this->model->add_user($email, $pass, $id_permiso);
-                        //$this->auth_helper->login($user_data);//linea necesaria?register->login
+                        $user_data = $this->model->get_user($email);
+                        $this->auth_helper->login($user_data);//linea necesaria?register->login
                         //header("Location: " . game);
-                        $this->view->show_login("Login correcto");
+                        $this->view->show_login("Login correcto");//Cuando ande register->login no se muestra esta vista
                     }else
                         $this->view->show_login("Usted ya posee una cuenta");
                 }
@@ -112,7 +114,7 @@
             }else{
                 //ASIGNAR PERMISOS DE VIEW --TO DO
                 $id_permiso = 3;//PERMISO DE VIEW ONLY
-                header("Location: " . login);
+                header("Location: " . login);//no lo llevo a login, le permito entrar a la pagina pero solo con opciones de vista, only read
             }
         }
 
@@ -135,4 +137,17 @@
 
 
     //FLUJO ROLES Y PERMISOS
+        //MODIFICAR
+            //CONTROLAR QUE SEA ADMIN
+        //AGREGAR
+            //CONTROLAR QUE EL USUARIO ESTE REGISTRADO PERO NO SEA ADMINISTRADOR
+        //INVITADO
+            //SOLO VISTA
+
+
+
+
+
+
+
 
