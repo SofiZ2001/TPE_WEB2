@@ -47,12 +47,10 @@
             $this->view->add_game($categories);
         }
 
-        //NEW
+        //este metodo no existe, se tiene que trasladar a save game y save update game
         public function add_game_image($params=null, $imagen=null){
             //$this->auth_helper->check_login();
-            //tengo un id
             $id_juego = $params[':ID'];
-            //imagen
             $imagen = $_FILES["uploaded_file"]["name"];
                 //si viene la img
                     //add model
@@ -78,24 +76,16 @@
             $nombre = $_POST['nombre'];
             $plataforma = $_POST['plataforma'];
             $categoria = $_POST['categoria'];
+            $imagen = $_FILES['game_img']['tmp_name'];
             $save = $_POST['save'];
             if(isset($save))
                 if((!empty($nombre)) && (!empty($plataforma)) && (!empty($categoria))){
-                    if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png")
-                        $this->model->add_game($nombre,$plataforma,$categoria,$_FILES['input_name']['tmp_name']);
-                    else//NO ES LO QUE PIDE EL TRABAJO-CONSULTAR
+                    if($_FILES['game_img']['type'] == "image/jpg" || $_FILES['game_img']['type'] == "image/jpeg" || $_FILES['game_img']['type'] == "image/png")
+                        $this->model->add_game($nombre,$plataforma,$categoria, $imagen);
+                    else
                         $this->model->add_game($nombre,$plataforma,$categoria);
                 }
             header("Location: " . game);
-        }
-
-        //done
-        public function update_game($params=null){
-            //$this->auth_helper->check_login();
-            $id_juego = $params[':ID'];
-            $game = $this->model->get_game($id_juego);
-            $category = $this->cat_model->get_categories();
-            $this->view->show_update_game($game, $category);
         }
 
         //done
@@ -107,9 +97,21 @@
             $categoria = $_POST['categoria'];
             $save= $_POST['save'];
             if(isset($save))
-                if((!empty($nombre)) && (!empty($plataforma)))//No control->id_juego&categoria->control set before
-                    $this->model->update_game($id_juego, $nombre, $plataforma, $categoria);
+                if((!empty($nombre)) && (!empty($plataforma)))
+                    if($_FILES['game_img']['type'] == "image/jpg" || $_FILES['game_img']['type'] == "image/jpeg" || $_FILES['game_img']['type'] == "image/png")
+                        $this->model->update_game($id_juego, $nombre, $plataforma, $categoria, $_FILES['game_img']['tmp_name']);
+                    else
+                        $this->model->update_game($id_juego, $nombre, $plataforma, $categoria);
             header("Location: " . game);
+        }
+
+         //done
+        public function update_game($params=null){
+            //$this->auth_helper->check_login();
+            $id_juego = $params[':ID'];
+            $game = $this->model->get_game($id_juego);
+            $category = $this->cat_model->get_categories();
+            $this->view->show_update_game($game, $category);
         }
 
         public function sorted_games($params=null){

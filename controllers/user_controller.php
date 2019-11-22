@@ -44,16 +44,12 @@
             //$this->auth_helper->check_login();
             $email = $_POST['email'];
             $permiso = $_POST['permiso'];
-//            //***QUEDO PEGADO AL CODIGO***
-            //el input permiso trae un string pero en db esta como int
-            if($permiso=='Administrador'){
+            if($permiso=='Administrador')
                 $id_permiso=1;
-            }else if($permiso=='Registrado'){
+            else if($permiso=='Registrado')
                 $id_permiso=2;
-            }else{
+            else
                 $id_permiso=3;
-            }
-            //$id_permiso = $this->model->get_id_permiso($permiso);//ver la forma de cambiar esto, es lo mismo que tomar el string que viene del input
             $save= $_POST['save'];
             if(isset($save))
                 if(!empty($email))
@@ -69,6 +65,7 @@
             header('Location: ' . user);
         }
 
+        //DONE
         public function login(){
             $this->view->show_login();
         }
@@ -89,9 +86,8 @@
                         $id_permiso = 2;
                         $this->model->add_user($email, $pass, $id_permiso);
                         $user_data = $this->model->get_user($email);
-                        $this->auth_helper->login($user_data);//linea necesaria?register->login
-                        //header("Location: " . game);
-                        $this->view->show_login("Login correcto");//Cuando ande register->login no se muestra esta vista
+                        $this->auth_helper->login($user_data);
+                        header("Location: " . game);
                     }else
                         $this->view->show_login("Usted ya posee una cuenta");
                 }

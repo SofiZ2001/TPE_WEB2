@@ -31,7 +31,6 @@
 	$r->addRoute('game', 'GET', 'game_controller', 'get_games');
 	$r->addRoute('game/:ID', 'GET', 'game_controller', 'get_game');
 	$r->addRoute('sorted_games/:ID','GET','game_controller','sorted_games');
-	$r->addRoute('add_game_image/:ID','GET','game_controller','add_game_image');
 
 	$r->addRoute('delete/:ID', 'GET', 'game_controller', 'delete_game');
 

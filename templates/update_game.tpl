@@ -23,6 +23,10 @@
 					</select>
 					<small id="nombre" class="form-text text-muted">Categoría</small>	
 				</div>
+				<div class="form-group col-md-10 offset-1">
+		            <input type="file" name="uploaded_file" id="upload_file">
+		    	    <small id="uploaded_file" class="form-text text-muted">Seleccione una imagen</small>
+		        </div>  
 				<div class="d-flex flex-column">
 					<div class="p-2 col-md-6 offset-3">
 					  	<input type="submit" name="save" value="Guardar" class="btn btn-primary form-group col-md-12">

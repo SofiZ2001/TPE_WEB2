@@ -28,17 +28,24 @@
     }
 
     //DONE
-    public function add_game($nombre, $plataforma, $categoria){
-        $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria) VALUES(?,?,?)");
-        $sentence->execute(array($nombre,$plataforma,$categoria));
+    public function add_game($nombre, $plataforma, $categoria, $imagen = null){
+        $path_img = null;
+        if($imagen)
+            $path_img = $this->upload_image($imagen);
+        $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
+        $sentence->execute(array($nombre,$plataforma,$categoria, $path_img));
+        //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
     }
 
-    //NEW
-    public function add_game_image($id_juego, $imagen){
-        $path_img = $this->upload_image($imagen);
-        $sentence = $this->db->prepare("UPDATE juego SET imagen=? WHERE id_juego=?");
-        $sentence->execute(array($path_img, $id_juego));
+    //DONE
+    public function update_game($id_juego, $nombre, $plataforma, $categoria, $imagen){
+        $pathImg = null;
+        if($imagen)
+            $path_img = $this->upload_image($imagen);
+        $sentence = $this->db->prepare("UPDATE juego SET nombre=?, plataforma=?, categoria=?, imagen=? WHERE id_juego=?");
+        $sentence->execute(array($nombre,$plataforma,$categoria, $path_img));
         //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
+        return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
     //NEW
@@ -48,14 +55,7 @@
         return $target;
     }
 
-    
-    public function update_game($id_juego,$nombre,$plataforma,$categoria){
-        $sentence =$this->db->prepare("UPDATE juego SET nombre=?, plataforma=?, categoria=? WHERE id_juego=?");
-        $sentence->execute(array($nombre, $plataforma, $categoria,$id_juego));
-        return $sentence->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    //error
+    //DONE
     public function delete_game($id_juego){
         $sentence = $this->db->prepare ("DELETE FROM juego WHERE id_juego=?");
         $sentence->execute(array($id_juego));

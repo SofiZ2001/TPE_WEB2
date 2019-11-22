@@ -7,9 +7,9 @@
     </form>
     <ul>
         {foreach from=$game_list item=game}
-        <li> {$game->nombre}, {$game->plataforma}, {$game->categoria}</li>
-            <a href= 'delete/{$game->id_juego}'>DELETE</a> 
-        </li>
-    {/foreach}
+            <li> {$game->nombre}, {$game->plataforma}, {$game->categoria}</li>
+                <a href= 'delete/{$game->id_juego}'>DELETE</a> 
+            </li>
+        {/foreach}
     </ul>
 {include file="footer.tpl"}
