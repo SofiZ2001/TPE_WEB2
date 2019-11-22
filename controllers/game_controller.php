@@ -95,13 +95,23 @@
             $nombre = $_POST['nombre'];
             $plataforma = $_POST['plataforma'];
             $categoria = $_POST['categoria'];
+            $is_image = $_POST['game_img'];//guarda si viene o no la img
+            $imagen = $_FILES['game_img']['tmp_name'];
             $save= $_POST['save'];
             if(isset($save))
-                if((!empty($nombre)) && (!empty($plataforma)))
-                    if($_FILES['game_img']['type'] == "image/jpg" || $_FILES['game_img']['type'] == "image/jpeg" || $_FILES['game_img']['type'] == "image/png")
-                        $this->model->update_game($id_juego, $nombre, $plataforma, $categoria, $_FILES['game_img']['tmp_name']);
+                if((!empty($nombre)) && (!empty($plataforma))){
+                    //$imagen = $_FILES['game_img']['tmp_name'];
+                    $this->model->update_game($id_juego, $nombre, $plataforma, $categoria, $imagen);
+                }
+                    //(if(!empty($is_image)){
+                        
+                    //}
+                    //else
+                        //$this->model->update_game($id_juego, $nombre, $plataforma, $categoria);
+                    /*if($_FILES['game_img']['type'] == "image/jpg" || $_FILES['game_img']['type'] == "image/jpeg" || $_FILES['game_img']['type'] == "image/png")
+                        $this->model->update_game($id_juego, $nombre, $plataforma, $categoria, $imagen);
                     else
-                        $this->model->update_game($id_juego, $nombre, $plataforma, $categoria);
+                        $this->model->update_game($id_juego, $nombre, $plataforma, $categoria);*/
             header("Location: " . game);
         }
 

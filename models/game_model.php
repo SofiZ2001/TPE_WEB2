@@ -9,20 +9,20 @@
 
     //done
     public function get_games(){
-        $sentence = $this->db->prepare( "SELECT * FROM juego ORDER BY categoria ASC, nombre ASC, plataforma ASC");
+        $sentence = $this->db->prepare("SELECT * FROM juego ORDER BY categoria ASC, nombre ASC, plataforma ASC");
         $sentence->execute();
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function get_sorted_games($categoria){
-        $sentence = $this->db->prepare( "SELECT * FROM juego WHERE categoria=? ORDER BY nombre ASC, plataforma ASC");
+        $sentence = $this->db->prepare("SELECT id_juego, nombre, plataforma, categoria FROM juego WHERE categoria=? ORDER BY nombre ASC, plataforma ASC");
         $sentence->execute(array($categoria));
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
     //done
     public function get_game($id_juego){
-        $sentence = $this->db->prepare( "SELECT * FROM juego WHERE id_juego=?");
+        $sentence = $this->db->prepare("SELECT * FROM juego WHERE id_juego=?");
         $sentence->execute(array($id_juego));
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
@@ -33,19 +33,19 @@
         if($imagen)
             $path_img = $this->upload_image($imagen);
         $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
-        $sentence->execute(array($nombre,$plataforma,$categoria, $path_img));
+        $sentence->execute(array($nombre,$plataforma,$categoria,$path_img));
         //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
     }
 
     //DONE
-    public function update_game($id_juego, $nombre, $plataforma, $categoria, $imagen){
-        $pathImg = null;
+    public function update_game($id_juego, $nombre, $plataforma, $categoria, $imagen=null){
+        $path_img = null;
         if($imagen)
             $path_img = $this->upload_image($imagen);
         $sentence = $this->db->prepare("UPDATE juego SET nombre=?, plataforma=?, categoria=?, imagen=? WHERE id_juego=?");
-        $sentence->execute(array($nombre,$plataforma,$categoria, $path_img));
+        $sentence->execute(array($nombre,$plataforma,$categoria,$path_img,$id_juego));
         //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
-        return $sentence->fetchAll(PDO::FETCH_OBJ);
+        //return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
     //NEW

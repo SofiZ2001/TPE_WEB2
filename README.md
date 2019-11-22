@@ -5,10 +5,30 @@ ALTER TABLE usuario ADD CONSTRAINT fk_usuario FOREIGN KEY (email) REFERENCES per
 
 ADD FONDO AL TERMINAR LA PAGINA
 GAME_LIST-TPL NO LO USO EN NINGUNA VISTA->CONTROLAR SI ES POPSIBLE BORRARLO
-QUESTIONS
 
+
+
+//Por ejemplo:
+$user = $this->userModel->getUserById($id);
+//... // validar password
+if($valid){
+  $_SESSION['USER'] = $user;
+}
+//y despues lo usas
+$user = $_SESSION['USER']
+if($user->permiso == 1) {
+ //ADMIN
+}
+else if($user->permiso == 2) {
+ //REGISTERED
+}
+else{//$user->permiso ==3 por lo tanto es invited
+ / /INVITED
+}
+
+QUESTIONS
 REQS
-	
+
 	API REST
 		hacer otra db que guarde comments por juego
 		comments con client side rendering	

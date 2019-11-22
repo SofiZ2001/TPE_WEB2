@@ -30,7 +30,7 @@
             <div class="img-center">
                 {if isset($game->imagen)}
                     <img src="{$game->imagen}" class="img-fluid img-thumbnail img-center"/>
-                {/if}
+                {/if}     
             </div>
         </div>
     </div>

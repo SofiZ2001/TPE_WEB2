@@ -3,7 +3,7 @@
     </div>
 	<div class="weight_form_small">
 		{foreach from=$game_detail item=game}
-			<form action="save_update_game/{$game->id_juego}" method="POST">
+			<form action="save_update_game/{$game->id_juego}" method="POST" enctype="multipart/form-data">
 				<div class="form-group col-md-10 offset-1">
 					<input type="hidden" name="id_juego" class="form-control" id="id_juego" placeholder="Id juego" value="{$game->id_juego}">
 				</div>
@@ -24,8 +24,8 @@
 					<small id="nombre" class="form-text text-muted">Categoría</small>	
 				</div>
 				<div class="form-group col-md-10 offset-1">
-		            <input type="file" name="uploaded_file" id="upload_file">
-		    	    <small id="uploaded_file" class="form-text text-muted">Seleccione una imagen</small>
+		            <input type="file" name="game_img" id="game_img">
+		    	    <small id="game_img" class="form-text text-muted">Seleccione una imagen</small>
 		        </div>  
 				<div class="d-flex flex-column">
 					<div class="p-2 col-md-6 offset-3">
