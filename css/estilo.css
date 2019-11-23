@@ -64,7 +64,14 @@
 
 .img-container{ 
 	border-radius: 10px;
-	width: 50%;
+	width: 90%;
+	border: 2px solid whitesmoke;
+	margin: 0 auto;
+}
+
+.img-container-add-game{ 
+	border-radius: 10px;
+	width: 60%;
 	border: 2px solid whitesmoke;
 	margin: 0 auto;
 }

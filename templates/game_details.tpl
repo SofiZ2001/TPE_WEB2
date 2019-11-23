@@ -26,7 +26,7 @@
                 </tr>    
             </tbody>
         </table>
-        <div class="img-container">
+        <div class="img-container-add-game">
             <div class="img-center">
                 {if isset($game->imagen)}
                     <img src="{$game->imagen}" class="img-fluid img-thumbnail img-center"/>

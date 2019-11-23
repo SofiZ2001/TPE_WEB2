@@ -20,11 +20,6 @@
 		<div class="form-group col-md-10 offset-1">
             <input type="file" name="game_img" id="game_img">
     	    <small id="game_img" class="form-text text-muted">Seleccione una imagen</small>
-    	     <!-- //EN PHP
-	        //Nombre del archivo
-	        $_FILES[“input_name”][“name”]
-	        //Archivo temporal creado en el server
-	        $_FILES[“input_name”][“tmp_name”] -->
         </div>  
 		<div class="d-flex flex-column">
 			<div class="p-2 col-md-6 offset-3">

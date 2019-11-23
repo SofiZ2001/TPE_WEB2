@@ -27,29 +27,35 @@
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
-    //DONE
-    public function add_game($nombre, $plataforma, $categoria, $imagen = null){
+    /*//1
+    public function add_game($nombre, $plataforma, $categoria, $imagen=null){
         $path_img = null;
         if($imagen)
             $path_img = $this->upload_image($imagen);
         $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
         $sentence->execute(array($nombre,$plataforma,$categoria,$path_img));
         //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
+    }*/
+
+    //2
+    public function add_game($nombre, $plataforma, $categoria, $path_imagen){
+        $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
+        $sentence->execute(array($nombre,$plataforma,$categoria,$path_imagen));
+        //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
     }
 
+
+
     //DONE
-    public function update_game($id_juego, $nombre, $plataforma, $categoria, $imagen=null){
-        $path_img = null;
-        if($imagen)
-            $path_img = $this->upload_image($imagen);
+    public function update_game($id_juego, $nombre, $plataforma, $categoria, $path_imagen){
         $sentence = $this->db->prepare("UPDATE juego SET nombre=?, plataforma=?, categoria=?, imagen=? WHERE id_juego=?");
-        $sentence->execute(array($nombre,$plataforma,$categoria,$path_img,$id_juego));
+        $sentence->execute(array($nombre,$plataforma,$categoria,$path_imagen,$id_juego));
         //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
         //return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
     //NEW
-    private function upload_image($imagen){
+    public function upload_image($imagen){
         $target = 'img/' . uniqid() . '.jpg';
         move_uploaded_file($imagen, $target);
         return $target;

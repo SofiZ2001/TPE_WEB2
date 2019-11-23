@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-22 15:52:29
+/* Smarty version 3.1.33, created on 2019-11-23 13:11:37
   from 'E:\xampp\htdocs\TPE_WEB2\templates\game_details.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd7f62d67cba7_50536482',
+  'unifunc' => 'content_5dd921f921bd47_61183311',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8767729651fcc19ccf663f2ce21338908d121971' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\game_details.tpl',
-      1 => 1574434282,
+      1 => 1574511095,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5dd7f62d67cba7_50536482 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd921f921bd47_61183311 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     <div class="weight_form_small">
@@ -64,7 +64,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </tr>    
             </tbody>
         </table>
-        <div class="img-container">
+        <div class="img-container-add-game">
             <div class="img-center">
                 <?php if (isset($_smarty_tpl->tpl_vars['game']->value->imagen)) {?>
                     <img src="<?php echo $_smarty_tpl->tpl_vars['game']->value->imagen;?>
