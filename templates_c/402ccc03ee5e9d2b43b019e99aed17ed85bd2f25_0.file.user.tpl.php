@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-24 04:01:36
+/* Smarty version 3.1.33, created on 2019-11-24 06:17:12
   from 'E:\xampp\htdocs\TPE_WEB2\templates\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd9f2908954a5_20685663',
+  'unifunc' => 'content_5dda12580aa5f3_72425837',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '402ccc03ee5e9d2b43b019e99aed17ed85bd2f25' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\user.tpl',
-      1 => 1574564484,
+      1 => 1574572531,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5dd9f2908954a5_20685663 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dda12580aa5f3_72425837 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     <div class="separation">

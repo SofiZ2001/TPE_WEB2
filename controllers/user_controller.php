@@ -85,7 +85,6 @@
         }
 
         public function login_verify(){
-            //trae los valores de inputs por POST
             $email = $_POST['email'];
             $pass = $_POST['password'];
             if(isset($_POST['register'])){//REGISTRAR
@@ -139,7 +138,6 @@
                 //MOSTRAR ERROR DE DATOS INCORRECTOS -DONE
         //INVITADO -TO DO
             //VER CUALQUIER COSA->NO MODIFICAR NADA -TO DO      
-
 
     //FLUJO ROLES Y PERMISOS
         //MODIFICAR

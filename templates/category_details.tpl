@@ -5,8 +5,10 @@
                 <tr>
                     <th>Categoria</th>
                     <th>Descripcion</th>
+                    {if ($user_permiso==1)}
                     <th></th>
                     <th>Acción</th>
+                    {/if}
                 </tr> 
             </thead>
             <tbody>
@@ -14,15 +16,18 @@
                     <tr>
                         <td>{$category->nombre_categoria}</td>
                         <td>{$category->descripcion}</td>
+                        {if ($user_permiso==1)}
                         <td><a href= 'delete_category/{$category->nombre_categoria}'>Borrar</a></td>
-                        <td><a href= 'update_category/{$category->nombre_categoria}'>Editar</a>
-                        </td>
+                        <td><a href= 'update_category/{$category->nombre_categoria}'>Editar</a></td>
+                        {/if}
                     </tr> 
                 {/foreach}
-                <tr>
-                    <td colspan="3"></td>
-                    <td><a href='add_category'>Agregar categoria</a></td>
-                </tr>    
+                    {if ($user_permiso==1)}
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><a href='add_category'>Agregar categoria</a></td>
+                    </tr> 
+                    {/if}   
             </tbody>
         </table>
     </div>
