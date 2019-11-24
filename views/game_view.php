@@ -11,9 +11,9 @@ require_once('libs/Smarty.class.php');
 
         //done
         public function show_game($game, $user_permiso){
-            $this->smarty->assign('basehref', game);
+            //$this->smarty->assign('basehref', game);
             $this->smarty->assign('game_details', $game);
-            $this->smarty->assign('basehref', user);
+            //$this->smarty->assign('basehref', user);
             $this->smarty->assign('user_permiso', $user_permiso);
             $this->smarty->display('./templates/game_details.tpl');
         }

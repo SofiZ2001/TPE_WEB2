@@ -28,8 +28,8 @@
             if($this->auth_helper->get_logged_id_permiso()==1){
                 $users = $this->model->get_users();
                 $this->view->show_users($users, $_SESSION['permiso']);
-            }
-            header("Location: " . game);    
+            }else
+                header("Location: " . game);    
         }
 
         //done
@@ -40,8 +40,8 @@
                 $user = $this->model->get_login_user($email);
                 $permisos = $this->model->get_permisos();
                 $this->view->show_update_user($user, $permisos, $_SESSION['permiso']);
-            }
-            header("Location: " . user);
+            }else
+                header("Location: " . user);
         }
         
         //done

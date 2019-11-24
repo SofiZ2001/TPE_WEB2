@@ -5,12 +5,14 @@
 		public function __construct(){
 		}
 		
+		//DONE
 		public function login($user){
 			session_start();
 			$_SESSION['user'] = $user->email;
 			$_SESSION['permiso'] = $user->id_permiso;
 		}
 
+		//DONE
 		public function check_login(){
             session_start();
             if(!isset($_SESSION['user'])){
@@ -33,7 +35,7 @@
 	        return $_SESSION['permiso'];
 	    }
 
-
+	    //DONE
         public function logout(){
         	session_start();
         	session_destroy();

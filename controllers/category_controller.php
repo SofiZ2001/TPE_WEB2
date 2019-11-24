@@ -59,12 +59,12 @@ class category_controller{
     //done
     public function update_category($params=null){
         $this->auth_helper->check_login();
-        //if($this->auth_helper->get_logged_id_permiso()==1){
-        $nombre_categoria = $params[':ID'];
-        $category = $this->model->get_category($nombre_categoria);
-        $this->view->show_update_category($category, $_SESSION['permiso']);
-        //}
-        header("Location: " . category);    
+        if($this->auth_helper->get_logged_id_permiso()==1){
+            $nombre_categoria = $params[':ID'];
+            $category = $this->model->get_category($nombre_categoria);
+            $this->view->show_update_category($category, $_SESSION['permiso']);
+        }else
+            header("Location: " . category);    
     }
 
     public function save_update_category(){

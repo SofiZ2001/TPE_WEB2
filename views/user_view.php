@@ -27,7 +27,7 @@
 
          //done
         public function show_update_user($user, $permisos, $user_permiso){
-            $this->smarty->assign('basehref', game);
+            $this->smarty->assign('basehref', user);
             $this->smarty->assign('user_detail', $user);
             $this->smarty->assign('basehref', category);
             $this->smarty->assign('user_permisos', $permisos);

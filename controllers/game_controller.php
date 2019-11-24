@@ -107,8 +107,8 @@
                 $game = $this->model->get_game($id_juego);
                 $category = $this->cat_model->get_categories();
                 $this->view->show_update_game($game, $category, $_SESSION['permiso']);
-            }
-            header("Location: " . game);
+            }else
+                header("Location: " . game);
         }
 
         //DONE
