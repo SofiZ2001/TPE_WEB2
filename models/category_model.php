@@ -33,7 +33,6 @@
         $sentence->execute(array($descripcion, $nombre_categoria));
     }
 
-
     //done
     public function delete_category($nombre_categoria){
         $sentence = $this->db->prepare ("DELETE FROM categoria WHERE nombre_categoria=?");

@@ -5,7 +5,9 @@
         <table class= "table table-striped">
             <thead>
                 <tr>
+                    {if ($user_permiso==1)}
                     <th>Email</th>
+                    {/if}
                     <th>Acción usuario</th>
                     <th>Niveles de permisos</th>
                     <th>Editar permisos</th>

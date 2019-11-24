@@ -27,9 +27,11 @@
 				     	<li class="nav-item rojo">
 				        	<a class="nav-link" href="category">Categorías</a>
 				     	</li>
+				     	{if ($user_permiso==1)}
 				     	<li class="nav-item active">
 				        	<a class="nav-link" href="user">Usuario</a>
 				     	</li>
+				     	{/if}
 				     	<li class="nav-item active">
 				        	<a class="nav-link" href="logout">Cerrar sesión</a>
 				     	</li>

@@ -19,87 +19,62 @@
 
         //done
         public function get_games(){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             $games = $this->model->get_games();
-            $this->view->show_games($games);
+            $this->view->show_games($games, $_SESSION['permiso']);
         }
 
         //done
         public function get_game($params=null){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             $id_juego = $params[':ID'];
             $game = $this->model->get_game($id_juego);
-            $this->view->show_game($game);
+            $this->view->show_game($game, $_SESSION['permiso']);
         }
 
         //done
         public function delete_game($params=null){
-            //$this->auth_helper->check_login();
-            $id= $params[':ID'];
-            $this->model->delete_game($id);
+            $this->auth_helper->check_login();
+            if($this->auth_helper->get_logged_id_permiso()==1){
+                $id= $params[':ID'];
+                $this->model->delete_game($id);
+            }    
             header('Location: ' . game);
         }
 
         //done
         public function add_game(){
-            //$this->auth_helper->check_login();
-            $categories = $this->cat_model->get_categories();
-            $this->view->add_game($categories);
-        }
-
-        //este metodo no existe, se tiene que trasladar a save game y save update game
-        public function add_game_image($params=null, $imagen=null){
-            //$this->auth_helper->check_login();
-            $id_juego = $params[':ID'];
-            $imagen = $_FILES["uploaded_file"]["name"];
-                //si viene la img
-                    //add model
-                    $add_img = $this->model->add_game_image($id_juego, $imagen);
-                    //llamo a get game
-                    $game = $this->model->get_game($id_juego);
-                    //muestro
-                    $this->view->show_game($game);
-                //sino muestro mensaje: "la imagen no fue cargada"
-            $target_path = "./img/";
-            $target_path = $target_path . basename( $_FILES['uploaded_file']['name']); 
-            if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $target_path)) {
-                echo "El archivo ".  basename( $_FILES['uploadedfile']['name']). 
-                " ha sido subido";
-            } else{
-                echo "Ha ocurrido un error, trate de nuevo!";
+            $this->auth_helper->check_login();
+            if($this->auth_helper->get_logged_id_permiso()==1){
+                $categories = $this->cat_model->get_categories();
+                $this->view->add_game($categories, $_SESSION['permiso']);
             }
+            header('Location: ' . game);
         }
 
         //done
         public function save_game(){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             $nombre = $_POST['nombre'];
             $plataforma = $_POST['plataforma'];
             $categoria = $_POST['categoria'];
             $imagen = $_FILES['game_img']['tmp_name'];
-            $save = $_POST['save'];
-            /*//1
+            $save = $_POST['save'];   
             if(isset($save))
                 if((!empty($nombre)) && (!empty($plataforma)) && (!empty($categoria))){
-                    if($_FILES['game_img']['type'] == "image/jpg" || $_FILES['game_img']['type'] == "image/jpeg" || $_FILES['game_img']['type'] == "image/png")
-                        $this->model->add_game($nombre,$plataforma,$categoria, $imagen);
+                    if(!empty($imagen))
+                        if($_FILES['game_img']['type'] == "image/jpg" || $_FILES['game_img']['type'] == "image/jpeg" || $_FILES['game_img']['type'] == "image/png")
+                            $path_imagen = $this->model->upload_image($imagen);
                     else
-                        $this->model->add_game($nombre,$plataforma,$categoria);
-                }*/
-            //2    
-            if(isset($save)){
-                if(!empty($imagen))
-                    $path_imagen = $this->model->upload_image($imagen);
-                else
-                    $path_imagen = null;
-                $this->model->add_game($nombre,$plataforma,$categoria, $path_imagen); 
-            }
+                        $path_imagen = null;
+                    $this->model->add_game($nombre,$plataforma,$categoria, $path_imagen); 
+                }
             header("Location: " . game);
         }
 
         //done
         public function save_update_game(){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             $id_juego = $_POST['id_juego'];
             $nombre = $_POST['nombre'];
             $plataforma = $_POST['plataforma'];
@@ -120,24 +95,28 @@
             }else if(isset($delete)){
                 $path_imagen = null;
                 $this->model->update_game($id_juego, $nombre, $plataforma, $categoria, $path_imagen);
-                header("Location: " . update_game/$id_juego);
             }
             header("Location: " . game);
         }
 
-         //done
+        //done
         public function update_game($params=null){
-            //$this->auth_helper->check_login();
-            $id_juego = $params[':ID'];
-            $game = $this->model->get_game($id_juego);
-            $category = $this->cat_model->get_categories();
-            $this->view->show_update_game($game, $category);
+            $this->auth_helper->check_login();
+            if($this->auth_helper->get_logged_id_permiso()==1){
+                $id_juego = $params[':ID'];
+                $game = $this->model->get_game($id_juego);
+                $category = $this->cat_model->get_categories();
+                $this->view->show_update_game($game, $category, $_SESSION['permiso']);
+            }
+            header("Location: " . game);
         }
 
+        //DONE
         public function sorted_games($params=null){
+            $this->auth_helper->check_login();
             $categoria = $params[':ID'];
             $game = $this->model->get_sorted_games($categoria);
-            $this->view->show_game($game);
+            $this->view->show_game($game, $_SESSION['permiso']);
         }
 
         

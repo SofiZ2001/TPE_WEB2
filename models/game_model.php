@@ -27,24 +27,12 @@
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
-    /*//1
-    public function add_game($nombre, $plataforma, $categoria, $imagen=null){
-        $path_img = null;
-        if($imagen)
-            $path_img = $this->upload_image($imagen);
-        $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
-        $sentence->execute(array($nombre,$plataforma,$categoria,$path_img));
-        //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
-    }*/
-
-    //2
+    //DONE
     public function add_game($nombre, $plataforma, $categoria, $path_imagen){
         $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
         $sentence->execute(array($nombre,$plataforma,$categoria,$path_imagen));
         //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
     }
-
-
 
     //DONE
     public function update_game($id_juego, $nombre, $plataforma, $categoria, $path_imagen){

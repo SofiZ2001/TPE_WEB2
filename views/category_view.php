@@ -10,28 +10,36 @@ require_once('libs/Smarty.class.php');
 	    }
 
 	    //done
-	    public function show_category($category){
+	    public function show_category($category, $user_permiso){
 	    	$this->smarty->assign('basehref', category);
 	    	$this->smarty->assign('category_details',$category);
+	    	$this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
 	        $this->smarty->display('./templates/category_details.tpl');
 	    }
 
 	    //done
-	    public function show_update_category($category){
-	    	//$this->smarty->assign('basehref', category);
+	    public function show_update_category($category, $user_permiso){
+	    	$this->smarty->assign('basehref', category);
 	    	$this->smarty->assign('category_detail',$category);
+	    	$this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
 	        $this->smarty->display('./templates/update_category.tpl');
 	    }
 
 	    //done
-	    public function show_categories($category){
+	    public function show_categories($category, $user_permiso){
 			$this->smarty->assign('basehref', category);
 	        $this->smarty->assign('category_list',$category);
+	        $this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
 	        $this->smarty->display('./templates/category.tpl');
 	    }  
 
 	    //done
-	    public function add_category(){
+	    public function add_category($user_permiso){
+	    	$this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
             $this->smarty->display('./templates/add_category.tpl');
         }
 	} 

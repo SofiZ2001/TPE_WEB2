@@ -1,8 +1,8 @@
 	<?php
-	require_once('controllers/game_controller.php');
+	require_once ('controllers/game_controller.php');
 	require_once ('controllers/category_controller.php');
 	require_once ('controllers/user_controller.php');
-	require_once('router.php');
+	require_once ('router.php');
 
 	define('BASE_URL', 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 	define('game', BASE_URL . 'game');
@@ -13,8 +13,7 @@
 	define('update_category', BASE_URL . 'update_category');
 	define('user', BASE_URL . 'user');
 	$r = new Router();
-	$r->setDefaultRoute('user_controller', 'login');			
-	//$r->addRoute('home', 'GET', 'game_controller', 'show_game');//no hecho
+	$r->setDefaultRoute('user_controller', 'login');
 
 	//USER
 	$r->addRoute('user', 'GET', 'user_controller', 'get_users');

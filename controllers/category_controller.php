@@ -15,31 +15,33 @@ class category_controller{
 
     //done
     public function get_categories(){
-        //$this->auth_helper->check_login();
+        $this->auth_helper->check_login();
         $categories = $this->model->get_categories();
-        $this->view->show_categories($categories);
+        $this->view->show_categories($categories, $_SESSION['permiso']);
     }
 
     //done
     public function get_category($params=null){
-        //$this->auth_helper->check_login();
+        $this->auth_helper->check_login();
         $nombre_categoria= $params[':ID'];
         $category = $this->model->get_category($nombre_categoria);
-        $this->view->show_category($category);
+        $this->view->show_category($category, $_SESSION['permiso']);
     }
 
     //done
     public function delete_category($params=null){
         $this->auth_helper->check_login();
-        $id = $params [':ID'];
-        $this->model->delete_category($id);
+        if($this->auth_helper->get_logged_id_permiso()==1){
+            $id = $params [':ID'];
+            $this->model->delete_category($id);
+        }
         header("Location: " . category);
     }
 
     //done
     public function add_category(){
         $this->auth_helper->check_login();
-        $this->view->add_category();
+        $this->view->add_category($_SESSION['permiso']);
     }
 
     //done
@@ -57,9 +59,12 @@ class category_controller{
     //done
     public function update_category($params=null){
         $this->auth_helper->check_login();
+        //if($this->auth_helper->get_logged_id_permiso()==1){
         $nombre_categoria = $params[':ID'];
         $category = $this->model->get_category($nombre_categoria);
-        $this->view->show_update_category($category);
+        $this->view->show_update_category($category, $_SESSION['permiso']);
+        //}
+        header("Location: " . category);    
     }
 
     public function save_update_category(){

@@ -10,32 +10,40 @@ require_once('libs/Smarty.class.php');
         }
 
         //done
-        public function show_game($game){
+        public function show_game($game, $user_permiso){
             $this->smarty->assign('basehref', game);
-            $this->smarty->assign('game_details',$game);
+            $this->smarty->assign('game_details', $game);
+            $this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
             $this->smarty->display('./templates/game_details.tpl');
         }
 
         //done
-        public function show_update_game($game, $category){
+        public function show_update_game($game, $category, $user_permiso){
             $this->smarty->assign('basehref', game);
-            $this->smarty->assign('game_detail',$game);
+            $this->smarty->assign('game_detail', $game);
             $this->smarty->assign('basehref', category);
-            $this->smarty->assign('category_detail',$category);
+            $this->smarty->assign('category_detail', $category);
+            $this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
             $this->smarty->display('./templates/update_game.tpl');
         }
 
         //done
-        public function show_games($game){
+        public function show_games($game, $user_permiso){
             $this->smarty->assign('basehref', game);
-            $this->smarty->assign('game_list',$game);
+            $this->smarty->assign('game_list', $game);
+            $this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
             $this->smarty->display('./templates/game.tpl');
         }
         
         //done
-        public function add_game($categories){
+        public function add_game($categories, $user_permiso){
             $this->smarty->assign('basehref', game);
-            $this->smarty->assign('category_list',$categories);
+            $this->smarty->assign('category_list', $categories);
+            $this->smarty->assign('basehref', user);
+            $this->smarty->assign('user_permiso', $user_permiso);
             $this->smarty->display('./templates/add_game.tpl');
         }
     }

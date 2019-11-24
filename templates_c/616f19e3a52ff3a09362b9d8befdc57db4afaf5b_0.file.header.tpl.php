@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-19 08:37:04
+/* Smarty version 3.1.33, created on 2019-11-24 02:38:35
   from 'E:\xampp\htdocs\TPE_WEB2\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd39ba02259f0_98921821',
+  'unifunc' => 'content_5dd9df1b1da404_60712529',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '616f19e3a52ff3a09362b9d8befdc57db4afaf5b' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\header.tpl',
-      1 => 1574149011,
+      1 => 1574559509,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dd39ba02259f0_98921821 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dd9df1b1da404_60712529 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +50,11 @@ function content_5dd39ba02259f0_98921821 (Smarty_Internal_Template $_smarty_tpl)
 				     	<li class="nav-item rojo">
 				        	<a class="nav-link" href="category">Categorías</a>
 				     	</li>
+				     	<?php if (($_smarty_tpl->tpl_vars['user_permiso']->value == 1)) {?>
 				     	<li class="nav-item active">
 				        	<a class="nav-link" href="user">Usuario</a>
 				     	</li>
+				     	<?php }?>
 				     	<li class="nav-item active">
 				        	<a class="nav-link" href="logout">Cerrar sesión</a>
 				     	</li>

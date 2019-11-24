@@ -14,9 +14,9 @@
             $this->auth_helper = new auth_helper();
         }
 
-        //done
+        //done LO uso?***************
         public function get_user($params=null){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             $email = $params[':ID'];
             $user = $this->model->get_user($email);
             $this->view->show_user($user);
@@ -24,44 +24,53 @@
 
         //done
         public function get_users(){
-            //$this->auth_helper->check_login();
-            $users = $this->model->get_users();
-            $this->view->show_users($users);
+            $this->auth_helper->check_login();
+            if($this->auth_helper->get_logged_id_permiso()==1){
+                $users = $this->model->get_users();
+                $this->view->show_users($users, $_SESSION['permiso']);
+            }
+            header("Location: " . game);    
         }
 
         //done
         public function update_user($params=null){
-            //$this->auth_helper->check_login();
-            //$this->check_login();
-            $email = $params[':ID'];
-            $user = $this->model->get_login_user($email);
-            $permisos = $this->model->get_permisos();
-            $this->view->show_update_user($user, $permisos);
+            $this->auth_helper->check_login();
+            if($this->auth_helper->get_logged_id_permiso()==1){
+                $email = $params[':ID'];
+                $user = $this->model->get_login_user($email);
+                $permisos = $this->model->get_permisos();
+                $this->view->show_update_user($user, $permisos, $_SESSION['permiso']);
+            }
+            header("Location: " . user);
         }
-
+        
         //done
         public function save_update_user(){
-            //$this->auth_helper->check_login();
-            $email = $_POST['email'];
-            $permiso = $_POST['permiso'];
-            if($permiso=='Administrador')
-                $id_permiso=1;
-            else if($permiso=='Registrado')
-                $id_permiso=2;
-            else
-                $id_permiso=3;
-            $save= $_POST['save'];
-            if(isset($save))
-                if(!empty($email))
-                    $this->model->update_user($email, $id_permiso);
+            $this->auth_helper->check_login();
+            if($this->auth_helper->get_logged_id_permiso()==1){
+                $email = $_POST['email'];
+                $permiso = $_POST['permiso'];
+                if($permiso=='Administrador')
+                    $id_permiso=1;
+                else if($permiso=='Registrado')
+                    $id_permiso=2;
+                else
+                    $id_permiso=3;
+                $save= $_POST['save'];
+                if(isset($save))
+                    if(!empty($email))
+                        $this->model->update_user($email, $id_permiso);
+            }    
             header("Location: " . user);
         }
 
         //done
         public function delete_user($params=null){
-            //$this->auth_helper->check_login();
-            $email= $params[':ID'];
-            $this->model->delete_user($email);
+            $this->auth_helper->check_login();
+            if($this->auth_helper->get_logged_id_permiso()==1){
+                $email= $params[':ID'];
+                $this->model->delete_user($email);
+            }
             header('Location: ' . user);
         }
 

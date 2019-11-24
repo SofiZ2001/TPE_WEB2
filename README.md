@@ -23,7 +23,7 @@ else if($user->permiso == 2) {
  //REGISTERED
 }
 else{//$user->permiso ==3 por lo tanto es invited
- / /INVITED
+ //INVITED
 }
 
 QUESTIONS
@@ -41,8 +41,26 @@ REQS
 
 
 
-		PARA GUARDAR EL ROL DEBO GUARDAR EN LA SESION EL ROL TAMBIEN?
+		DEBO GUARDAR EN LA SESION EL ROL?
+			public function get_logged_id_permiso() {
+		        if (session_status() != PHP_SESSION_ACTIVE)
+		            session_start();
+		        return $_SESSION['permiso'];
+		    }
+	    	si pregunto en una funcion este check me devolvera el entero 
 
-		method de save ganme en add_game.tpl tiene que ser get?
 
-		EL BORRAR IMG ES DE LA BD, Y TAMBIEN COMO ARCHIVO? EL PATH Y LA IMG?
+	    	public function login($user){
+				session_start();
+				$_SESSION['user'] = $user->email;
+				$_SESSION['permiso'] = $user->id_permiso;//id_permiso es el numero que guardo para saber si es 
+			}
+
+			public function get_logged_id_permiso() {
+		        if (session_status() != PHP_SESSION_ACTIVE)
+		            session_start();
+		        return $_SESSION['permiso'];
+		
+        	}
+
+        
