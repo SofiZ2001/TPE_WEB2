@@ -39,28 +39,5 @@ REQS
 		delete comments solo por api? Si
 
 
-
-
-		DEBO GUARDAR EN LA SESION EL ROL?
-			public function get_logged_id_permiso() {
-		        if (session_status() != PHP_SESSION_ACTIVE)
-		            session_start();
-		        return $_SESSION['permiso'];
-		    }
-	    	si pregunto en una funcion este check me devolvera el entero 
-
-
-	    	public function login($user){
-				session_start();
-				$_SESSION['user'] = $user->email;
-				$_SESSION['permiso'] = $user->id_permiso;//id_permiso es el numero que guardo para saber si es 
-			}
-
-			public function get_logged_id_permiso() {
-		        if (session_status() != PHP_SESSION_ACTIVE)
-		            session_start();
-		        return $_SESSION['permiso'];
-		
-        	}
-
+		No puedo editar si le paso el $user_permiso em category y en user, pero en game si :(
         
