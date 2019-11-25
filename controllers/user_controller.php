@@ -118,7 +118,11 @@
             }else{
                 //ASIGNAR PERMISOS DE VIEW --TO DO
                 $id_permiso = 3;//PERMISO DE VIEW ONLY
-                header("Location: " . login);//no lo llevo a login, le permito entrar a la pagina pero solo con opciones de vista, only read
+                $this->auth_helper->invited_login($id_permiso);
+                //Wheader("Location: " . game);//no lo llevo a login, le permito entrar a la pagina pero solo con opciones de vista, only read
+
+                //DONE
+        
             }
         }
 
