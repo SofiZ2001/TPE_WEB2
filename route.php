@@ -13,7 +13,7 @@
 	define('update_category', BASE_URL . 'update_category');
 	define('user', BASE_URL . 'user');
 	$r = new Router();
-	$r->setDefaultRoute('user_controller', 'login');
+	//$r->setDefaultRoute('user_controller', 'login');
 
 	//USER
 	$r->addRoute('user', 'GET', 'user_controller', 'get_users');
