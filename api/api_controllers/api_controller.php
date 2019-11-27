@@ -18,8 +18,6 @@
     }  
 
 }*/
-
-
     class api_controller{
 
         protected $data;

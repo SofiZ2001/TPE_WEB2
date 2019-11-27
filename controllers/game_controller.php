@@ -19,18 +19,16 @@
 
         //done
         public function get_games(){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             $games = $this->model->get_games();
-            session_start();
             $this->view->show_games($games, $_SESSION['permiso']);
         }
 
         //done
         public function get_game($params=null){
-            //$this->auth_helper->check_login();
+            $this->auth_helper->check_login();
             $id_juego = $params[':ID'];
             $game = $this->model->get_game($id_juego);
-            session_start();
             $this->view->show_game($game, $_SESSION['permiso']);
         }
 
