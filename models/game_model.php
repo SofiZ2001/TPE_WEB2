@@ -3,6 +3,7 @@
     class game_model{
 
     private $db;
+
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=juegos;charset=utf8', 'root', '');
     }
@@ -31,7 +32,7 @@
     public function add_game($nombre, $plataforma, $categoria, $path_imagen){
         $sentence = $this->db->prepare("INSERT INTO juego (nombre, plataforma, categoria, imagen) VALUES(?,?,?,?)");
         $sentence->execute(array($nombre,$plataforma,$categoria,$path_imagen));
-        //return $this->db->lastInsertId();// QUE DEVUELVO ACA SI ES UN ADD? POR QUE NECESITO DEVOLVERLO?
+        return $this->db->lastInsertId();
     }
 
     //DONE

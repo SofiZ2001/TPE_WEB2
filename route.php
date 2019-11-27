@@ -15,6 +15,9 @@
 	$r = new Router();
 	//$r->setDefaultRoute('user_controller', 'login');
 
+	$action = $_GET["action"];
+	$method = $_SERVER["REQUEST_METHOD"];
+
 	//USER
 	$r->addRoute('user', 'GET', 'user_controller', 'get_users');
 	$r->addRoute('delete_user/:ID', 'GET', 'user_controller', 'delete_user');
@@ -52,4 +55,4 @@
 	$r->addRoute('save_update_category/:ID','POST','category_controller','save_update_category');
 
 
-	$r->route($_GET['action'], $_SERVER['REQUEST_METHOD']);
+	$r->route($action, $method);
