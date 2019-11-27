@@ -46,4 +46,13 @@ require_once('libs/Smarty.class.php');
             $this->smarty->assign('user_permiso', $user_permiso);
             $this->smarty->display('./templates/add_game.tpl');
         }
+
+        public function mostrar_juego(){
+            $this->smarty->assign('BASE_URL', BASE_URL);
+            $this->smarty->assign('titulo',"Mostrar Tareas");
+            /*$this->smarty->assign('basehref', category);
+            $this->smarty->assign('category_list', $categories);*/
+            $this->smarty->display('./templates/ver_juegos_csr.tpl');
+        }
+
     }

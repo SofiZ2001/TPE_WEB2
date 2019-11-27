@@ -24,6 +24,12 @@
             $this->view->show_games($games, $_SESSION['permiso']);
         }
 
+        //NEW------------
+        public function get_games_csr() {
+            $this->auth_helper->check_login();
+            $this->view->mostrar_juego();
+        }
+
         //done
         public function get_game($params=null){
             $this->auth_helper->check_login();

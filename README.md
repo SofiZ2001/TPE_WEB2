@@ -33,13 +33,9 @@ REQS
 
 	API REST
 		hacer otra db que guarde comments por juego
-		comments con client side rendering	
-	Agregar una imagen con respecto a un item que ya existe y llamar al mostrar con la imagen? 
-		Adicional poder cargar la imagen en el llamado al add_game?
-			->Es el mismo método, sobreescribir
-
-		delete comments solo por api? Si
+		comments con client side rendering
+		agregar
 
 
-		No puedo editar si le paso el $user_permiso em category y en user, pero en game si :(
-        
+		IMPLEMENTACION
+			está bien la relacion de tablas con respecto a comments?

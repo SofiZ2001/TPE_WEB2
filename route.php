@@ -1,4 +1,4 @@
-	<?php
+<?php
 	require_once ('controllers/game_controller.php');
 	require_once ('controllers/category_controller.php');
 	require_once ('controllers/user_controller.php');
@@ -31,12 +31,14 @@
 
 	//GAME.      ($url,	$verb, 	   $controller,		$method)
 	$r->addRoute('game', 'GET', 'game_controller', 'get_games');
+	$r->addRoute('game_csr', 'GET', 'game_controller', 'get_games_csr');
 	$r->addRoute('game/:ID', 'GET', 'game_controller', 'get_game');
 	$r->addRoute('sorted_games/:ID','GET','game_controller','sorted_games');
 
 	$r->addRoute('delete/:ID', 'GET', 'game_controller', 'delete_game');
 
 	$r->addRoute('add_game', 'GET', 'game_controller', 'add_game');
+	$r->addRoute('save_game','POST','game_controller','save_game');
 	$r->addRoute('save_game','POST','game_controller','save_game');
 
 	$r->addRoute('update_game/:ID','GET','game_controller','update_game');
