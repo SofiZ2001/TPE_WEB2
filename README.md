@@ -20,3 +20,5 @@ REQUERIMIENTOS
 		IMPLEMENTACION
 			api a comments only?
 			o a todo el item y solo render a comments?
+
+			id comments
