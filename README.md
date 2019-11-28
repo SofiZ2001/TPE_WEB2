@@ -11,14 +11,6 @@ GAME_LIST-TPL NO LO USO EN NINGUNA VISTA->CONTROLAR SI ES POSIBLE BORRARLO
 QUESTIONS
 REQUERIMIENTOS
 	API REST
-		if(hacer otra db que guarde comments por juego?)
-			está bien la relacion de tablas con respecto a comments?
-			la tabla comments las guardo en game_model o deberia hacer otro modelo? //me suena raro tener que hacer otro model
-		solo comments con client side rendering?
-		borrado e insercion de imagen se hace por api, se debe renderizar con los comments tambien?
-
 		IMPLEMENTACION
 			api a comments only?
 			o a todo el item y solo render a comments?
-
-			id comments

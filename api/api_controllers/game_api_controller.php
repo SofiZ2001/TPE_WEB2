@@ -30,19 +30,22 @@ class game_api_controller {
     }
 }
 */
-require_once ('api_controller.php');
-require_once ('././models/game_model.php');
-//require_once ('./api_models/comments_model.php');
+require_once '././models/game_model.php';
+require_once 'api/api_controllers/api_controller.php';
+require_once 'api/api_models/comments_model.php';
+require_once 'api/api_views/json_view.php';
 
 class game_api_controller extends api_controller{
 
     private $model;
     private $view;
+    private $comments_model;
 
     public function __construct() { 
        parent::__construct();
        $this->model = new game_model();
-       //$this->view = new json_view();
+       $this->comments_model = new comments_model();
+       $this->view = new json_view();
     }
 
     public function get_games($params = null) {
@@ -75,8 +78,8 @@ class game_api_controller extends api_controller{
 
     public function add_game($params = []){     
         $game = $this->get_data();
-        $game_id = $this->model->add_game($game->nombre, $game->plataforma, $game->categoria, $game->imagen);
-        $new_game = $this->model->get_game($game_id);
+        $id_juego = $this->model->add_game($game->nombre, $game->plataforma, $game->categoria, $game->imagen);
+        $new_game = $this->model->get_game($id_juego);
         if($new_game)
             $this->response($new_game, 200);
         else
@@ -100,5 +103,44 @@ class game_api_controller extends api_controller{
             $this->response("Juego not found", 404);
     }
 
+    public function add_comment($params = []){     
+        $comment = $this->get_data();
+        $id_comentario = $this->comments_model->add_comment($comment->id_juego, $comment->comentario, $comment->puntaje, $comment->fecha);
+        $new_comment = $this->comments_model->get_comment($id_comentario);
+        if($new_comment)
+            $this->response($new_comment, $id_comentario, 200);
+        else
+            $this->response("Error al insertar juego", 500);
+    }
+
+    public function get_comments_game($params = null) {
+        $id_juego = $params[':ID'];
+        $comments = $this->comments_model->get_comments_game($id_juego);
+        if ($comments)
+            return $this->response($comments, 200);   
+        else
+            return $this->response("El comentario no existe", 404);
+    }
+
+    public function get_comment($params = null) {
+        $id_comentario = $params[':ID'];
+        //id_comentario devuelve params OK
+        $comment = $this->comments_model->get_comment($id_comentario);
+        if($comment)
+            $this->response($comment, 200);   
+        else
+            $this->response("No existe el comentario", 404);
+    }
+
+     public function delete_comment($params = []) {
+        $id_comentario = $params[':ID'];
+        $comment = $this->comments_model->get_comment($id_comentario);
+        if($comment) {
+            $this->comments_model->delete_comment($id_comentario);
+            $this->response("Comentario eliminado con éxito", 200);
+        }
+        else 
+            $this->response("Comentario not found", 404);
+    }
 
 }
