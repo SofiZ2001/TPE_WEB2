@@ -17,9 +17,9 @@
 
     //done
     public function get_comment($id_comentario){
-        $sentence = $this->db->prepare("SELECT * FROM comentarios WHERE $id_comentario=?");
+        $sentence = $this->db->prepare("SELECT * FROM comentarios WHERE id_comentario=?");
         $sentence->execute(array($id_comentario));
-        return $sentence->fetch(PDO::FETCH_OBJ);
+        return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
 
     //DONE

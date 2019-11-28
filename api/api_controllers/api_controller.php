@@ -1,6 +1,6 @@
 <?php
 
-//require_once ("api/api_views/json_view.php");
+require_once ("api/api_views/json_view.php");
 
 /*abstract class api_controller {
     protected $model;
@@ -21,11 +21,11 @@
     class api_controller{
 
         protected $data;
-        //private $view;
+        private $view;
         private $model; 
 
         public function __construct() {
-            //$this->view = new json_view();
+            $this->view = new json_view();
             $this->data = file_get_contents("php://input"); 
             $this->model = new game_model();
         }
