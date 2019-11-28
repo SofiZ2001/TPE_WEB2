@@ -101,11 +101,11 @@
                 }
                 else
                     $this->view->show_login("Complete todos los datos por favor");
-            }else if(isset($_POST['login'])){//INICIAR SESION
+            }else if(isset($_POST['login'])){
                 if(!empty($email) && !empty($pass)){
-                    $user_data = $this->model->get_user($email);//obtiene el usuario en el model
-                    if(!empty($user_data)){//si user existe en db
-                        if(password_verify($pass, $user_data->contraseña)){//input user = db_pass ?
+                    $user_data = $this->model->get_user($email);
+                    if(!empty($user_data)){
+                        if(password_verify($pass, $user_data->contraseña)){
                             $this->auth_helper->login($user_data);
                             header("Location: " . game);
                         }else
@@ -143,13 +143,13 @@
         //INVITADO -TO DO
             //VER CUALQUIER COSA->NO MODIFICAR NADA -TO DO      
 
-    //FLUJO ROLES Y PERMISOS
-        //MODIFICAR
-            //CONTROLAR QUE SEA ADMIN
-        //AGREGAR
-            //CONTROLAR QUE EL USUARIO ESTE REGISTRADO PERO NO SEA ADMINISTRADOR
-        //INVITADO
-            //SOLO VISTA
+    //FLUJO ROLES Y PERMISOS  -IP
+        //MODIFICAR -DONE
+            //CONTROLAR QUE SEA ADMIN -DONE
+        //AGREGAR -DONE
+            //CONTROLAR QUE EL USUARIO ESTE REGISTRADO PERO NO SEA ADMINISTRADOR -DONE
+        //INVITADO -TO DO
+            //SOLO VISTA -TO DO
 
 
 
