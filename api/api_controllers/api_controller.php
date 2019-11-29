@@ -1,23 +1,6 @@
 <?php
 
 require_once ("api/api_views/json_view.php");
-
-/*abstract class api_controller {
-    protected $model;
-    protected $view;
-    private $data; 
-
-    public function __construct() {
-        $this->view = new json_view();
-        $this->data = file_get_contents("php://input"); 
-        $this->model = new game_model();
-    }
-
-    function getData(){ 
-        return json_decode($this->data); 
-    }  
-
-}*/
     class api_controller{
 
         protected $data;
@@ -45,11 +28,8 @@ require_once ("api/api_views/json_view.php");
             return (isset($status[$code]))? $status[$code] : $status[500];
         }
 
-        function get_data(){ 
+        public function get_data(){ 
             return json_decode($this->data); 
         }  
-
-
-
 
     }

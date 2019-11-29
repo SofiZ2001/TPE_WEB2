@@ -74,6 +74,18 @@
 	border: 2px solid whitesmoke;
 	margin: 0 auto;
 }
+.container_comments{ 
+	border-radius: 10px;
+	width: 60%;
+	border: 2px solid whitesmoke;
+	margin: 0 auto;
+}
+
+.form_comm{
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+}
 
 .img-center{
 	height: 100%;

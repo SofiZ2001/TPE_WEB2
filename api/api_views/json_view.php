@@ -11,9 +11,7 @@ class json_view {
         return json_encode($data);
     }
 
-    /**
-     * Devuelve un mensaje de error dado un código de error HTTP.
-     */
+    //Devuelve un mensaje de error dado un código de error HTTP.
     private function _requestStatus($code){
         $status = array(
             200 => "OK",

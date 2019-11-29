@@ -29,6 +29,12 @@
         return $this->db->lastInsertId();
     }
 
+   public function get_fecha(){
+        $fecha = $this->db->prepare("SELECT CURDATE()");
+        $fecha-> execute();
+        return $fecha->fetch(PDO::FETCH_OBJ);
+    }
+
     //DONE
     public function delete_comment($id_comentario){
         $sentence = $this->db->prepare ("DELETE FROM comentarios WHERE id_comentario=?");

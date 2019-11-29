@@ -39,5 +39,55 @@
                 {/if}     
             </div>
         </div>
+        <div class="container_comments">
+            <form action="api/comment" id="form-games" method="POST" class="form_comm">
+                <div class="form-group row">
+                    <div class="col-md-7">
+                        <textarea class="form-control" id="comentario" rows="6" name="comentario"></textarea>
+                        <small id="comentario" class="form-text text-muted">Agrega un comentario</small>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <input type="number" class="form-control" name="puntaje" id="puntaje">
+                        <small id="nombre" class="form-text text-muted">Puntaje del juego</small>
+                        <input type="date" class="form-control" name="puntaje" id="puntaje">
+                        <small id="nombre" class="form-text text-muted">Fecha</small>
+                        <input type="submit" name="save" value="Agregar" class="btn btn-primary form-group col-md-12">
+                    </div>
+                </div>  
+            </form>
+            <ul id="comments">
+                <li>jaj</li>
+            </ul>
+        </div>
     </div>
-{include file="footer.tpl"}
+    <button id="btnScroll" title="Ir arriba">
+            <i class="fas fa-angle-double-up"></i>
+    </button>
+    <footer>
+        <div class="redesSociales">
+            <div class="redSocContent">
+                <a href="https://twitter.com/login?lang=es" class="font">
+                    <i class="fab fa-twitter fa-2x" id="iconTw"></i>
+                </a>
+            </div>
+            <div class="redSocContent">
+                <a href="https://www.instagram.com/?hl=es-la" class="font">
+                    <i class="fab fa-instagram fa-2x" id="iconInst"></i>
+                </a>
+            </div>
+            <div class="redSocContent">
+                <a href="https:www.facebook.com" class="font">
+                    <i class="fab fa-facebook-square fa-2x"id="iconFb"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+        <script type="text/javascript" src="./js/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./js/bootstrap.js"></script>
+        <script type="text/javascript" src="./js/scroll.js"></script>
+        <script src="./js/juegos.js"></script>
+    </body>
+</html>
+
+            

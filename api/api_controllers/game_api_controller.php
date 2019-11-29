@@ -51,9 +51,9 @@ class game_api_controller extends api_controller{
     public function get_games($params = null) {
         $games = $this->model->get_games();
         if (isset($games))
-            return $this->response($games, 200);   
+            return $this->view->response($games, 200);   
         else
-            return $this->response(null, 404);
+            return $this->view->response(null, 404);
     }
 
     public function get_game($params = null) {
@@ -105,7 +105,8 @@ class game_api_controller extends api_controller{
 
     public function add_comment($params = []){     
         $comment = $this->get_data();
-        $id_comentario = $this->comments_model->add_comment($comment->id_juego, $comment->comentario, $comment->puntaje, $comment->fecha);
+        $fecha = strftime("%Y-%m-%d-%H-%M-%S", time());
+        $id_comentario = $this->comments_model->add_comment($comment->id_juego, $comment->comentario, $comment->puntaje, $fecha);
         $new_comment = $this->comments_model->get_comment($id_comentario);
         if($new_comment)
             $this->response($new_comment, 200);
