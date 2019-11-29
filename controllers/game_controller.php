@@ -35,6 +35,7 @@
             $this->auth_helper->check_login();
             $id_juego = $params[':ID'];
             $game = $this->model->get_game($id_juego);
+
             $this->view->show_game($game, $_SESSION['permiso']);
         }
 
@@ -53,6 +54,7 @@
             $this->auth_helper->check_login();
             if($this->auth_helper->get_logged_id_permiso()==1){
                 $categories = $this->cat_model->get_categories();
+                $current_date = strftime("%Y-%m-%d-%H-%M-%S", time());
                 $this->view->add_game($categories, $_SESSION['permiso']);
             }
             header('Location: ' . game);

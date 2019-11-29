@@ -18,7 +18,8 @@ $r->addRoute('game/:ID', 'PUT', 'game_api_controller', 'update_game');
 $r->addRoute('comments/:ID', 'GET', 'game_api_controller', 'get_comments_game');//id_juego
 $r->addRoute('comment/:ID', 'DELETE', 'game_api_controller', 'delete_comment');
 $r->addRoute('comment', 'POST', 'game_api_controller', 'add_comment');
-$r->addRoute('comment/:ID', 'GET', 'game_api_controller', 'get_comment');//id_comentario
+$r->addRoute('comment/:ID', 'GET', 'game_api_controller', 'get_comment');//id_juego
+$r->addRoute('comment_rating/:ID', 'GET', 'game_api_controller', 'get_comment_rating');//id_comentario
 
 // rutea
 $r->route($action, $method);

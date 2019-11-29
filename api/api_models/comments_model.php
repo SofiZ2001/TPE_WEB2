@@ -10,7 +10,7 @@
 
     //done
     public function get_comments_game($id_juego){
-        $sentence = $this->db->prepare("SELECT * FROM comentarios WHERE id_juego=? ORDER BY fecha ASC, puntaje ASC");
+        $sentence = $this->db->prepare("SELECT * FROM comentarios WHERE id_juego=? ORDER BY puntaje DESC, fecha DESC");
         $sentence->execute(array($id_juego));
         return $sentence->fetchAll(PDO::FETCH_OBJ);
     }
@@ -29,15 +29,16 @@
         return $this->db->lastInsertId();
     }
 
-   public function get_fecha(){
-        $fecha = $this->db->prepare("SELECT CURDATE()");
-        $fecha-> execute();
-        return $fecha->fetch(PDO::FETCH_OBJ);
-    }
-
     //DONE
     public function delete_comment($id_comentario){
         $sentence = $this->db->prepare ("DELETE FROM comentarios WHERE id_comentario=?");
         $sentence->execute(array($id_comentario));
     }
+
+    public function get_comment_rating($id_juego){
+        $puntaje_total = $this->db->prepare("SELECT AVG(puntaje) FROM comentarios WHERE id_juego=?");
+        $puntaje_total->execute(array($id_juego));
+        return $puntaje_total;
+    }
+
  }

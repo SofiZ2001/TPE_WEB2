@@ -116,45 +116,10 @@
                     $this->view->show_login("Faltan datos, completelos por favor");
                 }
             }else{
-                //ASIGNAR PERMISOS DE VIEW --TO DO
-                $id_permiso = 3;//PERMISO DE VIEW ONLY
+                $id_permiso = 3;
                 $this->auth_helper->invited_login($id_permiso);
-                //Wheader("Location: " . game);//no lo llevo a login, le permito entrar a la pagina pero solo con opciones de vista, only read
-
-                //DONE
-        
+                $this->auth_helper->check_login();
+                header("Location: " . game);
             }
         }
-
     }
-
-    //FLUJO LOGIN
-        //REGISTRAR -DONEEEE
-            //REGISTRO EXITOSO -DONE
-                //AGREGO AL MODEL -DONE
-                    //MUESTRO MENSAJE DE REGISTRO -DONE
-                        //LO LLEVO A GAME -DONE
-                            //LO DEJO LOGUEADO -DONE
-            //SI SE REGISTRA Y YA EXISTE MOSTRAR MENSAJE DE ERROR -DONE
-        //INICIAR SESION -DONE
-            //LOGIN -DONE
-                //EMAIL+CONTRASEÑA COINCIDEN -DONE
-                //MOSTRAR ERROR DE DATOS INCORRECTOS -DONE
-        //INVITADO -TO DO
-            //VER CUALQUIER COSA->NO MODIFICAR NADA -TO DO      
-
-    //FLUJO ROLES Y PERMISOS  -IP
-        //MODIFICAR -DONE
-            //CONTROLAR QUE SEA ADMIN -DONE
-        //AGREGAR -DONE
-            //CONTROLAR QUE EL USUARIO ESTE REGISTRADO PERO NO SEA ADMINISTRADOR -DONE
-        //INVITADO -TO DO
-            //SOLO VISTA -TO DO
-
-
-
-
-
-
-
-
