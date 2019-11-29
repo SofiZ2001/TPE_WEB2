@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-11-24 03:35:29
+/* Smarty version 3.1.33, created on 2019-11-29 05:40:51
   from 'E:\xampp\htdocs\TPE_WEB2\templates\game.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dd9ec71341819_01252794',
+  'unifunc' => 'content_5de0a1538e2703_94253885',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b95651d87cea1746b13d55c047378f570b83b49f' => 
     array (
       0 => 'E:\\xampp\\htdocs\\TPE_WEB2\\templates\\game.tpl',
-      1 => 1574562927,
+      1 => 1575002449,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5dd9ec71341819_01252794 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5de0a1538e2703_94253885 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
     <div class="separation">
@@ -62,8 +62,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['game']->value) {
                         <?php }?>
                         <td><a href='game/<?php echo $_smarty_tpl->tpl_vars['game']->value->id_juego;?>
 '>Ver juego</a></td>
-                        <td><a href='sorted_games/<?php echo $_smarty_tpl->tpl_vars['game']->value->categoria;?>
-'>Ver juegos con esta categoria</a></td>
+                        <!-- <td><a href='sorted_games/<?php echo $_smarty_tpl->tpl_vars['game']->value->categoria;?>
+'>Ver juegos con esta categoria</a></td> -->
                     </tr> 
                 <?php
 }
@@ -71,7 +71,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['game']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <?php if (($_smarty_tpl->tpl_vars['user_permiso']->value == 1)) {?>
                     <tr>
-                        <td colspan="6"></td>
+                        <td colspan="5"></td>
                         <td><a href= 'add_game'>Agregar juego</a></td>
                     </tr>
                     <?php }?>   
