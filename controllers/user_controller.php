@@ -14,7 +14,7 @@
             $this->auth_helper = new auth_helper();
         }
 
-        //done LO uso?***************
+        //done
         public function get_user($params=null){
             $this->auth_helper->check_login();
             $email = $params[':ID'];

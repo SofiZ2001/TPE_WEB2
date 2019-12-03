@@ -26,7 +26,7 @@
                         <td><a href='update_game/{$game->id_juego}'>Editar</a></td>
                         {/if}
                         <td><a href='game/{$game->id_juego}'>Ver juego</a></td>
-                        <!-- <td><a href='sorted_games/{$game->categoria}'>Ver juegos con esta categoria</a></td> -->
+                        <td><a href='sorted_games/{$game->categoria}'>Ver juegos con esta categoria</a></td>
                     </tr> 
                 {/foreach}
                     {if ($user_permiso==1)}
