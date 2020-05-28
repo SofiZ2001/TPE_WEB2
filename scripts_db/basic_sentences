@@ -1,0 +1,52 @@
+--------------------------------------BEGIN SENTENCES--------------------------------------
+--------------------------TABLE--------------------------
+--CREATE TABLE
+CREATE TABLE IF NOT EXISTS table_name(--+if not exist->if the table exists, don't return the script error
+    table_name_id SERIAL,
+    atr1 VARCHAR(30) NOT NULL,
+    atr2 NUMERIC(6) NOT NULL,
+    date1 DATE NOT NULL
+);
+--RENAME COLUMN
+ALTER TABLE table1
+    RENAME COLUMN old_name to new_name;
+--RENAME TABLE
+ALTER TABLE table_name
+    RENAME TO new_table_name;
+--DROP TABLE
+DROP TABLE IF EXISTS  table_name;
+--------------------------REFERENCES--------------------------
+--ADD PKs
+ALTER TABLE table_name
+ADD CONSTRAINT table_name_PK
+PRIMARY KEY (table_name_field, table_name_field2);
+--DELETE PK
+ALTER TABLE table_name
+    DROP CONSTRAINT pk_table_name;
+--ADD FKs
+ALTER TABLE table_name-->ENTIDAD DEL LADO N
+ADD CONSTRAINT table_name_table_name2_FK
+FOREIGN KEY (table_name_id)
+REFERENCES table_name2 (table_name2_id)
+ON DELETE CASCADE-->DEFAULT RESTRICT
+ON UPDATE CASCADE;-->DEFAULT RESTRICT
+
+--------------------------QUERY LANGUAGE--------------------------
+SELECT *
+FROM table_name t1
+JOIN table_name2 t2
+ON (t1.id = t2.id)
+WHERE condition;
+--INSERTS
+INSERT INTO table_name (atr1, atr2, atr3)
+VALUES (atr1_value, atr2_value, atr3_value),
+       (atr1_value, atr2_value, atr3_value),
+       (atr1_value, atr2_value, atr3_value);
+INSERT INTO table_name (atr1, atr2, atr3) DEFAULT VALUES;
+DELETE FROM table_name
+WHERE condition;
+--------------------------RIRs--------------------------
+CREATE DOMAIN fecha_creacion_video
+as date not null
+check (extract(year from fecha_creacion) > 2015);
+--------------------------------------END SENTENCES--------------------------------------

@@ -171,7 +171,6 @@ ALTER TABLE ONLY peliculas_empleado
 ALTER TABLE ONLY peliculas_empleado
     ADD CONSTRAINT peliculas_empleado_id_tarea_fkey FOREIGN KEY (id_tarea) REFERENCES peliculas_tarea(id_tarea);
 
-
 --
 -- Name: empresa_productora empresa_productora_id_ciudad_fkey; Type: FK CONSTRAINT; Schema: unc_esq_peliculas; Owner: postgres
 --

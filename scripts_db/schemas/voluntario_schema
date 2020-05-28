@@ -5,7 +5,6 @@ create table voluntario_direccion as select * from unc_esq_voluntario.direccion;
 create table voluntario_historico as select * from unc_esq_voluntario.historico;
 create table voluntario_institucion as select * from unc_esq_voluntario.institucion;
 create table voluntario_pais as select * from unc_esq_voluntario.pais;
-
 --
 -- Name: continente pk_continente; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
 --
