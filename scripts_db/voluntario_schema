@@ -1,0 +1,142 @@
+create table voluntario_tarea as select * from unc_esq_voluntario.tarea;
+create table voluntario_voluntario as select * from unc_esq_voluntario.voluntario;
+create table voluntario_continente as select * from unc_esq_voluntario.continente;
+create table voluntario_direccion as select * from unc_esq_voluntario.direccion;
+create table voluntario_historico as select * from unc_esq_voluntario.historico;
+create table voluntario_institucion as select * from unc_esq_voluntario.institucion;
+create table voluntario_pais as select * from unc_esq_voluntario.pais;
+
+--
+-- Name: continente pk_continente; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_continente
+    ADD CONSTRAINT pk_voluntario_continente PRIMARY KEY (id_continente);
+
+
+--
+-- Name: direccion pk_direccion; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_direccion
+    ADD CONSTRAINT pk_voluntario_direccion PRIMARY KEY (id_direccion);
+
+
+--
+-- Name: historico pk_historico; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_historico
+    ADD CONSTRAINT pk_voluntario_historico PRIMARY KEY (fecha_inicio, nro_voluntario);
+
+
+--
+-- Name: institucion pk_institucion; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_institucion
+    ADD CONSTRAINT pk_voluntario_institucion PRIMARY KEY (id_institucion);
+
+
+--
+-- Name: pais pk_pais; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_pais
+    ADD CONSTRAINT pk_voluntario_pais PRIMARY KEY (id_pais);
+
+
+--
+-- Name: tarea pk_tarea; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_tarea
+    ADD CONSTRAINT pk_voluntario_tarea PRIMARY KEY (id_tarea);
+
+
+--
+-- Name: voluntario pk_voluntario; Type: CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_voluntario
+    ADD CONSTRAINT pk_voluntario_voluntario PRIMARY KEY (nro_voluntario);
+
+
+--
+-- Name: pais fk_continente; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_pais
+    ADD CONSTRAINT fk_voluntario_continente FOREIGN KEY (id_continente) REFERENCES voluntario_continente(id_continente);
+
+
+--
+-- Name: voluntario fk_coordinador; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_voluntario
+    ADD CONSTRAINT fk_voluntario_coordinador FOREIGN KEY (id_coordinador) REFERENCES voluntario_voluntario(nro_voluntario);
+
+
+--
+-- Name: institucion fk_direccion; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_institucion
+    ADD CONSTRAINT fk_voluntario_direccion FOREIGN KEY (id_direccion) REFERENCES voluntario_direccion(id_direccion);
+
+
+--
+-- Name: institucion fk_director; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_institucion
+    ADD CONSTRAINT fk_voluntario_director FOREIGN KEY (id_director) REFERENCES voluntario_voluntario(nro_voluntario);
+
+
+--
+-- Name: historico fk_institucion_h; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_historico
+    ADD CONSTRAINT fk_voluntario_institucion_h FOREIGN KEY (id_institucion) REFERENCES voluntario_institucion(id_institucion);
+
+
+--
+-- Name: voluntario fk_institucion_v; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_voluntario
+    ADD CONSTRAINT fk_voluntario_institucion_v FOREIGN KEY (id_institucion) REFERENCES voluntario_institucion(id_institucion);
+
+
+--
+-- Name: direccion fk_pais; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_direccion
+    ADD CONSTRAINT fk_voluntario_pais FOREIGN KEY (id_pais) REFERENCES voluntario_pais(id_pais);
+
+
+--
+-- Name: historico fk_tarea_h; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_historico
+    ADD CONSTRAINT fk_voluntario_tarea_vol_h FOREIGN KEY (id_tarea) REFERENCES voluntario_tarea(id_tarea);
+
+
+--
+-- Name: voluntario fk_tarea_v; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_voluntario
+    ADD CONSTRAINT fk_voluntario_tarea_v FOREIGN KEY (id_tarea) REFERENCES voluntario_tarea(id_tarea);
+
+
+--
+-- Name: historico fk_voluntario_h; Type: FK CONSTRAINT; Schema: unc_esq_voluntario; Owner: postgres
+--
+
+ALTER TABLE ONLY voluntario_historico
+    ADD CONSTRAINT fk_voluntario_voluntario_h FOREIGN KEY (nro_voluntario) REFERENCES voluntario_voluntario(nro_voluntario);
