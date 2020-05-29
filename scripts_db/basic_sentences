@@ -50,3 +50,46 @@ CREATE DOMAIN fecha_creacion_video
 as date not null
 check (extract(year from fecha_creacion) > 2015);
 --------------------------------------END SENTENCES--------------------------------------
+
+CREATE TABLE p6e1_ARTICULO (
+    id_articulo int  NOT NULL,
+    titulo varchar(80)  NOT NULL,
+    autor varchar(80)  NOT NULL,
+    nacionalidad varchar(80)  NOT NULL,
+    fecha_publicacion date  NOT NULL,
+    CONSTRAINT PK_ARTICULO PRIMARY KEY (id_articulo)
+);
+
+-- Table: CONTIENE
+CREATE TABLE p6e1_CONTIENE (
+    id_articulo int  NOT NULL,
+    idioma varchar(40)  NOT NULL,
+    cod_palabra int  NOT NULL,
+    CONSTRAINT CONTIENE_pk PRIMARY KEY (id_articulo,idioma,cod_palabra)
+);
+
+-- Table: PALABRA
+CREATE TABLE p6e1_PALABRA (
+    idioma varchar(40)  NOT NULL,
+    cod_palabra int  NOT NULL,
+    descripcion varchar(120)  NOT NULL,
+    CONSTRAINT PK_PALABRA PRIMARY KEY (idioma,cod_palabra)
+);
+
+-- foreign keys
+-- Reference: FK_CONTIENE_ARTICULO (table: CONTIENE)
+ALTER TABLE p6e1_CONTIENE ADD CONSTRAINT FK_CONTIENE_ARTICULO
+    FOREIGN KEY (id_articulo)
+    REFERENCES p6e1_ARTICULO (id_articulo)
+    NOT DEFERRABLE
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: FK_CONTIENE_PALABRA (table: CONTIENE)
+ALTER TABLE p6e1_CONTIENE ADD CONSTRAINT FK_CONTIENE_PALABRA
+    FOREIGN KEY (idioma, cod_palabra)
+    REFERENCES p6e1_PALABRA (idioma, cod_palabra)
+    NOT DEFERRABLE
+    INITIALLY IMMEDIATE
+
+
