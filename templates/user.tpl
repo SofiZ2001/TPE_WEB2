@@ -5,7 +5,7 @@
         <table class= "table table-striped">
             <thead>
                 <tr>
-                    {if ($user_permiso==1)}
+                    {if ($user_permiso ==1)}
                     <th>Email</th>
                     {/if}
                     <th>Acción usuario</th>

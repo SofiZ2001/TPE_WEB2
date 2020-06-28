@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2020-06-28 05:34:04
+  from 'C:\xampp\htdocs\TPE_DB_G21\templates\user_login.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5ef80fac818171_12874185',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '94715a5f20f07babf6a8f80873ee49253261890f' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\TPE_DB_G21\\templates\\user_login.tpl',
+      1 => 1593315240,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ef80fac818171_12874185 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -37,7 +60,8 @@
 				<small id="password_id" class="form-text text-muted">Password</small>
 			</div>
 			<div>
-				<p class="col-md-10 offset-1">{$message}</p>
+				<p class="col-md-10 offset-1"><?php echo $_smarty_tpl->tpl_vars['message']->value;?>
+</p>
 			</div>
 			<div class="d-flex flex-column">
 				<div class="p-2 col-md-10 offset-1">
@@ -52,8 +76,15 @@
 			</div>
 		</form>
 	</div>
-	<script type="text/javascript" src="./js/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="./js/bootstrap.js"></script>
+	<?php echo '<script'; ?>
+ type="text/javascript" src="./js/jquery.js"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"><?php echo '</script'; ?>
+>
+	<?php echo '<script'; ?>
+ type="text/javascript" src="./js/bootstrap.js"><?php echo '</script'; ?>
+>
 </body>
-</html>
+</html><?php }
+}

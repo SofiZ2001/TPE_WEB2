@@ -4,12 +4,12 @@
 	<div class="weight_form_small">
 		<form action="save_category" method="POST" >
 			<div class="form-group col-md-10 offset-1">
-			    <input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" placeholder="Categoria">
-				<small id="categoria" class="form-text text-muted">Categoría</small>
+			    <input type="number" class="form-control" name="id_categoria" id="id_categoria" placeholder="Categoria">
+				<small id="id_categoria" class="form-text text-muted">Id categoria</small>
 			</div>
 			<div class="form-group col-md-10 offset-1">
-			    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="descripcion"></textarea>
-			    <small id="descripcion" class="form-text text-muted">Descripción</small>
+			    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="nombre_categoria"></textarea>
+			    <small id="nombre_categoria" class="form-text text-muted">Nombre categoria</small>
 			</div>
 			<div class="d-flex flex-column">
 				<div class="p-2 col-md-6 offset-3">

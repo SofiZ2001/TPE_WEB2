@@ -14,7 +14,6 @@
             $this->auth_helper = new auth_helper();
         }
 
-        //done
         public function get_user($params=null){
             $this->auth_helper->check_login();
             $email = $params[':ID'];
@@ -22,7 +21,6 @@
             $this->view->show_user($user);
         }
 
-        //done
         public function get_users(){
             $this->auth_helper->check_login();
             if($this->auth_helper->get_logged_id_permiso()==1){
@@ -32,7 +30,6 @@
                 header("Location: " . game);    
         }
 
-        //done
         public function update_user($params=null){
             $this->auth_helper->check_login();
             if($this->auth_helper->get_logged_id_permiso()==1){
@@ -44,16 +41,15 @@
                 header("Location: " . user);
         }
         
-        //done
         public function save_update_user(){
             $this->auth_helper->check_login();
             if($this->auth_helper->get_logged_id_permiso()==1){
                 $email = $_POST['email'];
                 $permiso = $_POST['permiso'];
-                if($permiso=='Administrador')
-                    $id_permiso=1;
-                else if($permiso=='Registrado')
-                    $id_permiso=2;
+                if($permiso == 'Administrador')
+                    $id_permiso = 1;
+                else if($permiso == 'Registrado')
+                    $id_permiso = 2;
                 else
                     $id_permiso=3;
                 $save= $_POST['save'];
@@ -64,7 +60,6 @@
             header("Location: " . user);
         }
 
-        //done
         public function delete_user($params=null){
             $this->auth_helper->check_login();
             if($this->auth_helper->get_logged_id_permiso()==1){
@@ -74,7 +69,6 @@
             header('Location: ' . user);
         }
 
-        //DONE
         public function login(){
             $this->view->show_login();
         }
@@ -85,29 +79,32 @@
         }
 
         public function login_verify(){
+            $id_usuario = $_POST['id_usuario'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
             $email = $_POST['email'];
             $pass = $_POST['password'];
             if(isset($_POST['register'])){//REGISTRAR
-                if(!empty($email) && !empty($pass)){
-                    $user_data = $this->model->get_user($email);
-                    if($user_data==null){
+                if(!empty($id_usuario) && !empty($nombre) && !empty($apellido) && !empty($email) && !empty($pass)){//trajo todos los datos
+                    $user_data = $this->model->get_user($email);//existe en la base?
+                    if($user_data == null){//si no existe -> registrarlo
                         $id_permiso = 2;
-                        $this->model->add_user($email, $pass, $id_permiso);
+                        $this->model->add_user($id_usuario, $nombre, $apellido, $email, $pass, $id_permiso);
                         $user_data = $this->model->get_user($email);
                         $this->auth_helper->login($user_data);
-                        header("Location: " . game);
+                        header("Location: " . category);
                     }else
                         $this->view->show_login("Usted ya posee una cuenta");
                 }
                 else
                     $this->view->show_login("Complete todos los datos por favor");
-            }else if(isset($_POST['login'])){
+            }else if(isset($_POST['login'])){//LOGUEAR
                 if(!empty($email) && !empty($pass)){
                     $user_data = $this->model->get_user($email);
                     if(!empty($user_data)){
-                        if(password_verify($pass, $user_data->contraseña)){
+                        if(password_verify($pass, $user_data->password)){
                             $this->auth_helper->login($user_data);
-                            header("Location: " . game);
+                            header("Location: " . category);
                         }else
                             $this->view->show_login("Contraseña incorrecta");
                     }else
@@ -115,11 +112,11 @@
                 }else{
                     $this->view->show_login("Faltan datos, completelos por favor");
                 }
-            }else{
+            }else{//INVITADO
                 $id_permiso = 3;
                 $this->auth_helper->invited_login($id_permiso);
                 $this->auth_helper->check_login();
-                header("Location: " . game);
+                header("Location: " . category);
             }
         }
     }

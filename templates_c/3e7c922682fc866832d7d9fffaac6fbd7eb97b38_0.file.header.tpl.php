@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2020-06-28 22:17:32
+  from 'C:\xampp\htdocs\TPE_DB_G21\templates\header.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5ef8fadc99bdf5_75316178',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '3e7c922682fc866832d7d9fffaac6fbd7eb97b38' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\TPE_DB_G21\\templates\\header.tpl',
+      1 => 1593375448,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ef8fadc99bdf5_75316178 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -27,15 +50,16 @@
 				     	<li class="nav-item rojo">
 				        	<a class="nav-link" href="category">Categorías</a>
 				     	</li>
-				     	{if ($user_permiso==1)}
+				     	<?php if (($_smarty_tpl->tpl_vars['user_permiso']->value == 1)) {?>
 				     	<li class="nav-item active">
 				        	<a class="nav-link" href="user">Usuario</a>
 				     	</li>
-				     	{/if}
+				     	<?php }?>
 				     	<li class="nav-item active">
 				        	<a class="nav-link" href="logout">Cerrar sesión</a>
 				     	</li>
 				    </ul>
 				</div>
 			</nav>
-	</header>
+	</header><?php }
+}

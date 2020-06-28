@@ -8,7 +8,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 $r = new Router();
 
 //GAME
-$r->addRoute('game', 'GET', 'game_api_controller', 'get_games');
+$r->addRoute('gamesil', 'GET', 'game_api_controller', 'get_games');
 $r->addRoute('game/:ID', 'GET', 'game_api_controller', 'get_game');
 $r->addRoute('game/:ID', 'DELETE', 'game_api_controller', 'delete_game');
 $r->addRoute('game', 'POST', 'game_api_controller', 'add_game');

@@ -5,12 +5,12 @@
 		{foreach from=$category_detail item=category}
 			<form action="save_update_category/{$category->nombre_categoria}" method="POST">
 				<div class="form-group col-md-10 offset-1">
-					<input type="text" name="nombre_categoria" id="name" class="form-control" placeholder="Categoria" value="{$category->nombre_categoria}">
-					<small id="name" class="form-text text-muted">Nombre del juego</small>
+					<input type="text" name="id_categoria" id="id_categoria" class="form-control" placeholder="Id categoria" value="{$category->id_categoria}">
+					<small id="name" class="form-text text-muted">Id categoria</small>
 				</div>
 				<div class="form-group col-md-10 offset-1">
-					<input type="text" name="descripcion" id="description" class="form-control" placeholder="Categoria" value="{$category->descripcion}">
-					<small id="description" class="form-text text-muted">Descripcion del juego</small>
+					<input type="text" name="nombre_categoria" id="nombre_categoria" class="form-control" placeholder="nombre_categoria" value="{$category->nombre_categoria}">
+					<small id="description" class="form-text text-muted">Nombre categoria</small>
 				</div>
 				<div class="d-flex flex-column">
 					<div class="p-2 col-md-6 offset-3">

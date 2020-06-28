@@ -11,7 +11,7 @@
 			<div class="form-group col-md-10 offset-1"> 	
 				<select name="permiso" class="form-control">
 					{foreach from=$user_permisos item=permisos}
-						<option>{$permisos->permiso}</option>
+						<option>{$permisos->nombre_permiso}</option>
 					{/foreach}
 				</select>
 				<small id="permiso" class="form-text text-muted">Permiso</small>	

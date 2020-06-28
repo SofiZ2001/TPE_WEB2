@@ -13,55 +13,31 @@ class category_controller{
         $this->auth_helper = new auth_helper();
     }
 
-    //done
     public function get_categories(){
         $this->auth_helper->check_login();
         $categories = $this->model->get_categories();
         $this->view->show_categories($categories, $_SESSION['permiso']);
     }
 
-    //done
-    public function get_category($params=null){
-        $this->auth_helper->check_login();
-        $nombre_categoria= $params[':ID'];
-        $category = $this->model->get_category($nombre_categoria);
-        $this->view->show_category($category, $_SESSION['permiso']);
-    }
-
-    //done
     public function delete_category($params=null){
         $this->auth_helper->check_login();
-        if($this->auth_helper->get_logged_id_permiso()==1){
+        if($this->auth_helper->get_logged_id_permiso()==1 || $this->auth_helper->get_logged_id_permiso()==2){
             $id = $params [':ID'];
             $this->model->delete_category($id);
         }
         header("Location: " . category);
     }
 
-    //done
     public function add_category(){
         $this->auth_helper->check_login();
         $this->view->add_category($_SESSION['permiso']);
     }
 
-    //done
-    public function save_category(){
-        $this->auth_helper->check_login();
-        $nombre_categoria = $_POST['nombre_categoria'];
-        $descripcion = $_POST['descripcion'];
-        $save = $_POST['save'];
-        if(isset($save))
-            if((!empty($nombre_categoria)) && (!empty($descripcion)))
-                $this->model->add_category($nombre_categoria,$descripcion);
-        header("Location: " . category);
-    }
-
-    //done
     public function update_category($params=null){
         $this->auth_helper->check_login();
-        if($this->auth_helper->get_logged_id_permiso()==1){
-            $nombre_categoria = $params[':ID'];
-            $category = $this->model->get_category($nombre_categoria);
+        if($this->auth_helper->get_logged_id_permiso()==1 || $this->auth_helper->get_logged_id_permiso()==2){
+            $id_categoria = $params[':ID'];
+            $category = $this->model->get_category($id_categoria);
             $this->view->show_update_category($category, $_SESSION['permiso']);
         }else
             header("Location: " . category);    
@@ -69,25 +45,65 @@ class category_controller{
 
     public function save_update_category(){
         $this->auth_helper->check_login();
+        $id_categoria = $_POST['id_categoria'];
         $nombre_categoria = $_POST['nombre_categoria'];
-        $descripcion = $_POST['descripcion'];
         $save = $_POST['save'];
-        if((isset($save))&&(!empty($nombre_categoria)) && (!empty($descripcion)))
-            $this->model->update_category($nombre_categoria,$descripcion);
+        if((isset($save))&&(!empty($id_categoria)) && (!empty($nombre_categoria)))
+            $old_id_categoria = $this->model->get_category($id_categoria, $nombre_categoria);
+            $this->model->update_category($id_categoria, $nombre_categoria);
+        header("Location: " . category);
+    }
+    
+    public function save_category(){
+        $this->auth_helper->check_login();
+        $id_categoria = $_POST['id_categoria'];
+        $nombre_categoria = $_POST['nombre_categoria'];
+        $save = $_POST['save'];
+        if(isset($save))
+            if((!empty($id_categoria)) && (!empty($nombre_categoria)))
+                $this->model->add_category($id_categoria, $nombre_categoria);
         header("Location: " . category);
     }
 
-    /*public function check_login(){
-            session_start();
-            if(!isset($_SESSION['userId'])){
-                header("Location: " . URL_LOGIN);
-                die();
-            }
 
-            if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 5000)) { 
-                header("Location: " . URL_LOGOUT);
-                die(); // destruye la sesión, y vuelve al login
-            } 
-            $_SESSION['LAST_ACTIVITY'] = time();
-        }*/
+    //SUBCATEGORY
+    public function save_subcategory(){
+        $this->auth_helper->check_login();
+        $id_categoria = $_POST['id_categoria'];
+        $id_subcategoria = $_POST['id_subcategoria'];
+        $nombre_subcategoria = $_POST['nombre_subcategoria'];
+        $save = $_POST['save'];
+        if(isset($save))
+            if((!empty($id_categoria)) && (!empty($id_subcategoria)) && (!empty($nombre_subcategoria)))
+                $this->model->add_subcategory($id_categoria, $id_subcategoria, $nombre_subcategoria);
+        header("Location: " . category);
+    }
+
+    public function add_subcategory($params=null){
+        $this->auth_helper->check_login();
+        $id_categoria = $params[':ID'];
+        $this->view->add_subcategory($_SESSION['permiso'], $id_categoria);
+    }
+
+    public function get_subcategories($params=null){
+        $this->auth_helper->check_login();
+        $id_categoria= $params[':ID'];
+        $subcategories = $this->model->get_subcategories($id_categoria);
+        $this->view->show_subcategories($subcategories, $_SESSION['permiso']);
+    }
+
+    public function delete_subcategory($params=null){
+        $this->auth_helper->check_login();
+        if($this->auth_helper->get_logged_id_permiso()==1 || $this->auth_helper->get_logged_id_permiso()==2){
+            $id_categoria = $params [':ID'];
+            $id_subcategoria = $params [':IG'];
+            $this->model->delete_subcategory($id_categoria, $id_subcategoria);
+        }
+        header("Location: " . category);
+    }
+
+
+    //----------------------------------------------------------
+
+
 }

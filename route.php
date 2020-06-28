@@ -1,12 +1,14 @@
 <?php
-	require_once ('controllers/game_controller.php');
+	require_once ('controllers/evento_controller.php');
 	require_once ('controllers/category_controller.php');
 	require_once ('controllers/user_controller.php');
 	require_once ('router.php');
 
 	define('BASE_URL', 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-	define('game', BASE_URL . 'game');
+	define('evento', BASE_URL . 'evento');
+	define('ediciones_evento', BASE_URL . 'ediciones_evento');
 	define('category', BASE_URL . 'category');
+	define('subcategories', BASE_URL . 'subcategories');
 	define('login', BASE_URL . 'login');
 	define('logout', BASE_URL . 'logout');
 	define('update_game', BASE_URL . 'update_game');
@@ -29,32 +31,38 @@
 	$r->addRoute('logout', 'GET', 'user_controller', 'logout');
 	$r->addRoute('login_verify', 'POST', 'user_controller', 'login_verify');
 
-	//GAME.      ($url,	$verb, 	   $controller,		$method)
-	$r->addRoute('game', 'GET', 'game_controller', 'get_games');
-	$r->addRoute('game_csr', 'GET', 'game_controller', 'get_games_csr');
-	$r->addRoute('game/:ID', 'GET', 'game_controller', 'get_game');
-	$r->addRoute('sorted_games/:ID','GET','game_controller','sorted_games');
+	//EVENTOS.      ($url,	$verb, 	   $controller,		$method)
+	$r->addRoute('evento', 'GET', 'evento_controller', 'get_eventos');
+	$r->addRoute('ediciones_evento/:ID', 'GET', 'evento_controller', 'get_ediciones_evento');
+	$r->addRoute('add_evento', 'GET', 'evento_controller', 'add_evento');
+	$r->addRoute('save_evento','POST','evento_controller','save_evento');
+	$r->addRoute('update_evento/:ID','GET','evento_controller','update_evento');
+	$r->addRoute('save_update_evento/:ID', 'POST', 'evento_controller', 'save_update_evento');
 
-	$r->addRoute('delete/:ID', 'GET', 'game_controller', 'delete_game');
 
-	$r->addRoute('add_game', 'GET', 'game_controller', 'add_game');
-	$r->addRoute('save_game','POST','game_controller','save_game');
-	$r->addRoute('save_game','POST','game_controller','save_game');
 
-	$r->addRoute('update_game/:ID','GET','game_controller','update_game');
-	$r->addRoute('save_update_game/:ID', 'POST', 'game_controller', 'save_update_game');
+
+
+	$r->addRoute('evento/:ID', 'GET', 'evento_controller', 'get_ediciones_evento');
+	$r->addRoute('sorted_event/:ID','GET','evento_controller','sorted_event');
+	
 
 	//CATEGORY
 	$r->addRoute('category', 'GET', 'category_controller', 'get_categories');
-	$r->addRoute('category/:ID', 'GET', 'category_controller', 'get_category');
-
-	$r->addRoute('delete_category/:ID', 'GET', 'category_controller', 'delete_category');
-
-	$r->addRoute('add_category', 'GET', 'category_controller', 'add_category');//refactor to list_item by category
-	$r->addRoute('save_category','POST','category_controller','save_category');
-
+	$r->addRoute('add_category', 'GET', 'category_controller', 'add_category');
 	$r->addRoute('update_category/:ID','GET','category_controller','update_category');
+	//save when add category
+	$r->addRoute('save_category','POST','category_controller','save_category');
+	//save when edit category
 	$r->addRoute('save_update_category/:ID','POST','category_controller','save_update_category');
+	$r->addRoute('delete_category/:ID', 'GET', 'category_controller', 'delete_category');
+	
+	//SUBCATEGORY
+	$r->addRoute('subcategories/:ID', 'GET', 'category_controller', 'get_subcategories');
+	$r->addRoute('add_subcategory/:ID', 'GET', 'category_controller', 'add_subcategory');
+	//save when add category
+	$r->addRoute('save_subcategory','POST','category_controller','save_subcategory');
+	$r->addRoute('delete_subcategory/:ID/:IG', 'GET', 'category_controller', 'delete_subcategory');
 
 
 	$r->route($action, $method);

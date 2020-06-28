@@ -16,7 +16,7 @@
 		public function check_login(){
             session_start();
             if(!isset($_SESSION['user']))
-            	if($_SESSION['permiso'] !=3) {
+            	if($_SESSION['permiso'] != 3) {
             		header("Location: " . login);
 	                die();
             	}
@@ -25,7 +25,7 @@
         public function invited_login($id_permiso){
             session_start();
             $_SESSION['permiso'] = $id_permiso;
-    		header("Location: ". game);
+    		header("Location: ". category);
         }
         
         //DONE
